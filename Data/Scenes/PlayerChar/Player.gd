@@ -8,6 +8,7 @@ var velocity = Vector3()
 # Гравитация - наш вес, в случае если нам понадобится падать
 var gravity = -30
 var max_speed = 16
+var jump_height = 700
 var mouse_sensitivity = 0.002
 # ! функция _ready выполняет вложенные в нее код когда объект инициалируется игрой.
 
@@ -31,7 +32,10 @@ func get_input():
 		input_dir += -global_transform.basis.x
 	if Input.is_action_pressed("strafe_right"):
 		input_dir += global_transform.basis.x
-		
+
+	# Обработка Esc. Пока это сразу закрывает приложение, потом нужно будет открывать менюшку
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 	# Нормализирует инпут таким образом что мы не сможем слишком быстро стрейфится
 	input_dir = input_dir.normalized() 
 	
@@ -53,15 +57,20 @@ func _physics_process(delta):
 	
 	# гравити * дельту сменит нашу позицию при падении. К примеру если захотим падать быстрее, можно менять вес.
 	# дельта - временной отрезок между предъидущим и текущим фреймом.
-	velocity.y *= gravity * delta
+
 	# получаем позицию нашего движения и множим на желаемый коэфициэнт скорость.
 	var desired_velocity = get_input() * max_speed
+	# возможно тут нужно перенести обработку клавиши в get_input, чтобы всё было в одном месте
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y += jump_height * delta
 	# так как велосити - это экземпляр объекта Vector3, мы можем модифицировать вот таким вот образом:
+	velocity.y += gravity * delta
 	velocity.x = desired_velocity.x
 	velocity.z = desired_velocity.z
+
 	# Применям велосити для движения, не до конца понял этот момент, CTRL + LMB - документация.
-	
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+
 	
 func change_weapon():
 	pass
