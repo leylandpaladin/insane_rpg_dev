@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 
@@ -8,6 +8,56 @@ height = 0.715843
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.374531, 0.131623, 0.354627 )
+
+[sub_resource type="CapsuleMesh" id=3]
+
+[sub_resource type="CylinderMesh" id=4]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Spatial
+
+export var camrot_h = 0
+export var camrot_v = 0
+var cam_v_min = 75
+var cam_v_max = -55
+var h_sensivity = 0.1
+var v_sensivity = 0.1
+var h_acceleration = 10
+var v_acceleration = 10
+var direction
+
+func _ready():
+	direction = Vector3.BACK.rotated(Vector3.UP, $h.global_transform.basis.get_euler().y)
+	
+func _input(event):
+	if Globals.isInFirstPerson == false:
+		if event is InputEventMouseMotion:
+			camrot_h -= event.relative.x * 0.1
+			camrot_v += event.relative.y * 0.1
+
+func _physics_process(delta):
+	
+	if Globals.isInFirstPerson == false:
+		var h_rot = $h.global_transform.basis.get_euler().y
+	
+		if Input.is_action_pressed(\"move_forward\") ||  Input.is_action_pressed(\"move_back\") ||  Input.is_action_pressed(\"strafe_left\") ||  Input.is_action_pressed(\"strafe_right\"):
+		
+			direction = Vector3(Input.get_action_strength(\"strafe_left\") - Input.get_action_strength(\"strafe_right\"),
+					0,
+					Input.get_action_strength(\"move_forward\") - Input.get_action_strength(\"move_back\"))
+
+		
+		direction = direction.rotated(Vector3.UP, h_rot).normalized()
+	
+		camrot_v = clamp(camrot_v, cam_v_min, cam_v_max)
+	
+		$h.rotation_degrees.y = lerp($h.rotation_degrees.y, camrot_h, delta * h_acceleration)
+		$h/v.rotation_degrees.x = lerp($h/v.rotation_degrees.y, camrot_h, delta * v_acceleration)
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="Player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
@@ -23,7 +73,26 @@ shape = SubResource( 2 )
 [node name="Pivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831975, 0 )
 
-[node name="Camera" type="Camera" parent="Pivot"]
+[node name="Camera_1st" type="Camera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117897, 0 )
 
 [node name="Weapon" type="Spatial" parent="Pivot"]
+
+[node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 0.954282, 0.298908, 0, -0.298908, 0.954282, 0.586407, 0.450313, 2.0316 )
+fov = 61.0
+
+[node name="Appearance" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, -0.00913776, 0.49987, 0, -0.399896, -0.0114222, -0.0290444, 0.551751, -0.0259961 )
+mesh = SubResource( 3 )
+
+[node name="Nose" type="MeshInstance" parent="Appearance"]
+transform = Transform( 0.101, 0, 0, 0, 1.255, 0.00024459, 0, -0.00337319, 0.0909997, -0.001, 0.528, 0.812 )
+mesh = SubResource( 4 )
+
+[node name="Camroot" type="Spatial" parent="."]
+script = SubResource( 5 )
+
+[node name="h" type="Spatial" parent="Camroot"]
+
+[node name="v" type="Spatial" parent="Camroot/h"]
