@@ -34,19 +34,24 @@ func get_input():
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("change_cameramode"):
-		
-		if $Pivot/Camera_1st.current == true:
-			$Pivot/Camera_3rd/.set_current(true)
-			Globals.isInFirstPerson = false
-						
-		else:
-			$Pivot/Camera_1st.set_current(true)
-			Globals.isInFirstPerson = true
+		change_camera_mode()
 	# Нормализирует инпут таким образом что мы не сможем слишком быстро стрейфится
 	input_dir = input_dir.normalized() 
 	
 	# Возвращаем значение куда именно мы движемся для использования в других функциях.
 	return input_dir
+		
+		
+		
+func change_camera_mode():
+		if $Pivot/Camera_1st.current == true:
+			$Pivot/Camera_3rd/.set_current(true)
+			Globals.isInFirstPerson = false
+			
+						
+		else:
+			$Pivot/Camera_1st.set_current(true)
+			Globals.isInFirstPerson = true
 		
 # Мауслук в этой функции
 func _unhandled_input(event):
