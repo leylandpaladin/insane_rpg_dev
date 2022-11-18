@@ -3,6 +3,7 @@ extends Node
 
 #Player Exclusive Variables:
 
+
 export var player_gravity = -30
 export var player_max_speed = 16
 export var player_jump_height = 70
