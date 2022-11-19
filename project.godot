@@ -49,7 +49,7 @@ window/size/fullscreen=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogue_nodes/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [global]
 
