@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/Scenes/00TestLevel.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Data/Scripts/InteractableObject.gd" type="Script" id=5]
 [ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=6]
 [ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=7]
-[ext_resource path="res://Data/Scenes/DiaglogueLayer.gd" type="Script" id=8]
+[ext_resource path="res://Data/Scripts/DiaglogueLayer.gd" type="Script" id=8]
+[ext_resource path="res://Data/Scenes/Interactable_Objects/Market_stall.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RichTextEffect" id=1]
 script = ExtResource( 6 )
@@ -75,6 +76,15 @@ custom_effects = [ SubResource( 1 ) ]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
 promt_message = "Drink"
+
+[node name="Market_stall" parent="." instance=ExtResource( 9 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )
+script = ExtResource( 5 )
+promt_message = "Trade"
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.200841, 0.728192, -0.655286, 0.213389, 0.685374, 0.696224, 0.9561, 0, -0.293039, 81.0608, -5.56944, -25.6296 )
+light_energy = 2.516
 
 [connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
 [connection signal="interacted" from="DisgustingWell" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]
