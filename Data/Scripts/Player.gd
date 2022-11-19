@@ -4,8 +4,6 @@ extends KinematicBody
 # Обращаемся к велосити каждый раз когда нужно получить нашу позицию.
 var velocity = Vector3()
 # Гравитация - наш вес, в случае если нам понадобится падать
-
-
 	
 
 # ! функция _ready выполняет вложенные в нее код когда объект инициалируется игрой.
@@ -13,7 +11,6 @@ var velocity = Vector3()
 # ! SET MOUSE MODE Означает что игра захватывает мышь
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 # Получаем инпут игрока
 func get_input():
 	var input_dir = Vector3()
@@ -83,7 +80,6 @@ func _physics_process(delta):
 	# Применям велосити для движения, не до конца понял этот момент, CTRL + LMB - документация.
 	velocity = move_and_slide(velocity, Vector3.UP, true)
 
-	
 func change_weapon():
 	pass
 	
@@ -92,8 +88,4 @@ func _process(delta):
 	
 	pass
 	
-
-
-# Called when the node enters the scene tree for the first time.
-
 

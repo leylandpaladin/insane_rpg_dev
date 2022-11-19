@@ -1,18 +1,20 @@
-
 class_name Interactable
 extends Node
 
 onready var timer = $Timer
 
+export var promt_message = "Interact"
+export var promt_action = "Interact"
+
+signal interacted(body)
+
 func get_interaction_text():
-	return "Interact"
+	return promt_message
 
-func interact():
-	$MeshInstance.get_active_material(0).set_albedo(Color(1,0,0))
-	print("Interacted with %s" % name)
-	timer.set_wait_time(3)
-	timer.start()
+func interact(body):
+	print(body, " <<<<< interacted with >>>>> ", name)
+	emit_signal("interact", body)
+	print("signal emited")
+	
 
 
-func _on_Timer_timeout():
-	$MeshInstance.get_active_material(0).set_albedo(Color(0,0,1))

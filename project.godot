@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PopupDialog",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://addons/dialogue_nodes/objects/dialogueBox.gd"
+}, {
 "base": "Node",
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://Data/Scripts/InteractableObject.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextWait",
+"language": "GDScript",
+"path": "res://addons/dialogue_nodes/objects/bbcodeWait.gd"
 } ]
 _global_script_class_icons={
-"Interactable": ""
+"DialogueBox": "",
+"Interactable": "",
+"RichTextWait": ""
 }
 
 [application]
@@ -34,6 +46,14 @@ window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
 window/size/fullscreen=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dialogue_nodes/plugin.cfg" )
+
+[global]
+
+addons=false
 
 [gui]
 

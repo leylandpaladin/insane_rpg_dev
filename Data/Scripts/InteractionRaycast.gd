@@ -22,9 +22,9 @@ func _physics_process(delta):
 				set_interaction_text(detected.get_interaction_text())
 			
 						
-		if Input.is_action_just_pressed("interact"):
-			detected.interact()
-			set_interaction_text(detected.get_interaction_text())
+			if Input.is_action_just_pressed("interact"):
+				detected.interact(owner)
+				set_interaction_text(detected.get_interaction_text())
 	elif not is_colliding():
 				
 		set_interaction_text("")

@@ -39,8 +39,11 @@ collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Promt" type="Label" parent="Pivot/Camera_1st/InteractionRay"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 691.0
+margin_top = 391.0
+margin_right = 729.0
+margin_bottom = 405.0
+text = "PLACEHOLDER"
 
 [node name="Nose" type="MeshInstance" parent="Pivot/Camera_1st"]
 transform = Transform( 0.0404, 0, 0, 0, -0.013154, 0.0454858, 0, -0.501831, -0.00113723, -0.0294444, -0.160076, -0.389416 )
