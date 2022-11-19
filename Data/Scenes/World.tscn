@@ -71,10 +71,10 @@ start_id = "well_diaglogue_start"
 options_alignment = 0
 custom_effects = [ SubResource( 1 ) ]
 
-[node name="Disgusting well" parent="." instance=ExtResource( 4 )]
+[node name="DisgustingWell" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
 promt_message = "Drink"
 
 [connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
-[connection signal="interacted" from="Disgusting well" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]
+[connection signal="interacted" from="DisgustingWell" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]

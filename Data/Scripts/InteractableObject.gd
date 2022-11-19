@@ -13,7 +13,7 @@ func get_interaction_text():
 
 func interact(body):
 	print(body, " <<<<< interacted with >>>>> ", name)
-	emit_signal("interact", body)
+	emit_signal("interacted", body)
 	print("signal emited")
 	
 
