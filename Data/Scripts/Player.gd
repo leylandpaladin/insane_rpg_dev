@@ -55,14 +55,14 @@ func change_camera_mode():
 # Мауслук в этой функции
 func _unhandled_input(event):
 	
-
-	if event is InputEventMouseMotion:
+	if Globals.mouseLocked == false:
+		if event is InputEventMouseMotion:
 		# крутим башкой в 3д пространстве
 		# y лево/право
-		rotate_y(-event.relative.x * Globals.mouse_sensitivity)
+			rotate_y(-event.relative.x * Globals.mouse_sensitivity)
 		# Крутим башкой вверх-вниз с ограничением чтобы не крутится вертикальной центрифугой
-		$Pivot.rotate_x(-event.relative.y * Globals.mouse_sensitivity)
-		$Pivot.rotation.x = clamp($Pivot.rotation.x, -1.2,1.2)
+			$Pivot.rotate_x(-event.relative.y * Globals.mouse_sensitivity)
+			$Pivot.rotation.x = clamp($Pivot.rotation.x, -1.2,1.2)
 		
 func _physics_process(delta):
 	
