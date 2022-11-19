@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/Scenes/00TestLevel.tscn" type="PackedScene" id=2]
@@ -11,6 +11,18 @@
 
 [sub_resource type="RichTextEffect" id=1]
 script = ExtResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=3]
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.176471, 0.501961, 0.168627, 1 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 3 )
+flip_faces = true
+size = Vector2( 0.15, 0.15 )
 
 [node name="World" type="Spatial"]
 
@@ -75,6 +87,13 @@ custom_effects = [ SubResource( 1 ) ]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
 promt_message = "Drink"
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( -0.999987, 0.00500907, 0, -0.00500907, -0.999987, 0, 0, 0, 1, 97.8473, -9.10741, -2.42082 )
+amount = 9
+mesh = SubResource( 2 )
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
 
 [connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
 [connection signal="interacted" from="DisgustingWell" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]
