@@ -34,7 +34,6 @@ _global_script_class_icons={
 
 config/name="insane_rpg"
 run/main_scene="res://Data/Scenes/World.tscn"
-config/icon="res://icon.png"
 
 [autoload]
 
