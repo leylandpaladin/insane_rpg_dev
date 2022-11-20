@@ -83,7 +83,6 @@ popup_exclusive = true
 script = ExtResource( 7 )
 dialogue_file = "res://Data/Dialogues/well.json"
 start_id = "well_diaglogue_start"
-max_options = 4
 options_alignment = 0
 custom_effects = [ SubResource( 1 ) ]
 
