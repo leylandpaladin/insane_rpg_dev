@@ -15,11 +15,11 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@v1.4.1
         with:
-          name: build_windows
+          name: insane_rpg.exe
           preset: windows
           debugMode: "true"
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Platform - Linux
+          name: insane_rpg - Windows build
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}

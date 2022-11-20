@@ -14,11 +14,11 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@v1.4.1
         with:
-          name: build_mac
+          name: insane_rpg.osx.x86_64
           preset: mac
           debugMode: "true"
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Platform - Linux
+          name: Platform - Mac OS X
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
