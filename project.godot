@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "PopupDialog",
 "class": "DialogueBox",
 "language": "GDScript",
-"path": "res://build/linux/addons/dialogue_nodes/objects/dialogueBox.gd"
+"path": "res://addons/dialogue_nodes/objects/dialogueBox.gd"
 }, {
 "base": "Node",
 "class": "Interactable",
@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "RichTextEffect",
 "class": "RichTextWait",
 "language": "GDScript",
-"path": "res://build/linux/addons/dialogue_nodes/objects/bbcodeWait.gd"
+"path": "res://addons/dialogue_nodes/objects/bbcodeWait.gd"
 } ]
 _global_script_class_icons={
 "DialogueBox": "",
