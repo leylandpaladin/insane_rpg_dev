@@ -56,23 +56,6 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "This is realy disgusting.
 "
 
-[node name="DiaglogueLayer" type="CanvasLayer" parent="."]
-script = ExtResource( 8 )
-
-[node name="DialogueBox" type="PopupDialog" parent="DiaglogueLayer"]
-margin_left = 936.0
-margin_top = 479.0
-margin_right = 1556.0
-margin_bottom = 692.0
-rect_min_size = Vector2( 300, 72 )
-popup_exclusive = true
-script = ExtResource( 7 )
-dialogue_file = "res://well.json"
-start_id = "well_diaglogue_start"
-max_options = 4
-options_alignment = 0
-custom_effects = [ SubResource( 1 ) ]
-
 [node name="DisgustingWell" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
@@ -87,5 +70,22 @@ promt_message = "Trade"
 transform = Transform( -0.200841, 0.728192, -0.655286, 0.213389, 0.685374, 0.696224, 0.9561, 0, -0.293039, 81.0608, -5.56944, -25.6296 )
 light_energy = 2.516
 
-[connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
+[node name="DiaglogueLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 8 )
+
+[node name="DialogueBox" type="PopupDialog" parent="DiaglogueLayer"]
+margin_left = 936.0
+margin_top = 479.0
+margin_right = 1556.0
+margin_bottom = 692.0
+rect_min_size = Vector2( 300, 72 )
+popup_exclusive = true
+script = ExtResource( 7 )
+dialogue_file = "res://Data/Dialogues/well.json"
+start_id = "well_diaglogue_start"
+max_options = 4
+options_alignment = 0
+custom_effects = [ SubResource( 1 ) ]
+
 [connection signal="interacted" from="DisgustingWell" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]
+[connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
