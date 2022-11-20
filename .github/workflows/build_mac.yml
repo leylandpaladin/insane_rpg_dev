@@ -6,6 +6,7 @@ on:
 jobs:
   Godot:
     runs-on: ubuntu-latest
+    if: github.ref == refs/heads/main
     steps:
       - uses: actions/checkout@v2
         with:
@@ -20,5 +21,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Platform - Mac OS X
+          name: insane_rpg - Mac OS X build
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
