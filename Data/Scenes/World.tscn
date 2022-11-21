@@ -18,7 +18,7 @@ transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 56.43
 [node name="GenericObject" parent="." groups=["interactable"] instance=ExtResource( 3 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 68.6112, -10.4766, -4.466 )
 
-[node name="DisgustingWell" parent="." instance=ExtResource( 4 )]
+[node name="WELL" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
 promt_message = "Drink"

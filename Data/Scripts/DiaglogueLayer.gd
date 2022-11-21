@@ -5,10 +5,10 @@ class_name Dialogues
 
 func _ready():
 	
-	SignalsGateway.connect("interacted", self, "_on_GenericObject_interacted")
+	SignalsGateway.connect("interacted", self, "on_Interaction")
 	print("signals loaded")
 	
-func _on_GenericObject_interacted(body, target):	
+func on_Interaction(body, target):	
 	
 	print("signal received from ", target, " to >>>> ", body)
 	
