@@ -5,14 +5,14 @@ class_name Dialogues
 
 func _ready():
 	
-	SignalsGateway.connect("interacted", self, "_on_DisgustingWell_interacted")
+	SignalsGateway.connect("interacted", self, "_on_GenericObject_interacted")
 	print("signals loaded")
 	
-func _on_DisgustingWell_interacted(body, target):	
+func _on_GenericObject_interacted(body, target):	
 	
 	print("signal received from ", target, " to >>>> ", body)
 	
-	if target.name == "DisgustingWell":
+	if target.obj_name == "FckingWell":
 		$DialogueBox.start()
 		Globals.mouseLocked = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
