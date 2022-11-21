@@ -3,22 +3,23 @@ extends CanvasLayer
 var player = null	
 class_name Dialogues
 
-func ready():
+func _ready():
 	
-	get_signals()
+	SignalsGateway.connect("interacted", self, "_on_DisgistingWell_interacted")
+	print("signals loaded")
 	
 func _on_DisgustingWell_interacted(body):
 	
 	print("signal recieved")
-	$DiaglogueLayer/DialogueBox.start()
+	$DialogueBox.start()
 	Globals.mouseLocked = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	body.set_physics_process(false)
 	body.set_process_input(false)
 	player = body
 
-
-func _on_Well_dialogue_dialogue_ended():
+func _on_DialogueBox_dialogue_ended():
+	pass # Replace with function body.
 	Globals.mouseLocked = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	player.set_physics_process(true)

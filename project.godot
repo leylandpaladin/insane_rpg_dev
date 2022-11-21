@@ -43,7 +43,7 @@ config/name="insane_rpg_dev"
 [autoload]
 
 Globals="*res://Data/Scripts/Globals.gd"
-ToolsCustom="*res://Data/Scripts/tests/Tools_Custom.gd"
+SignalsGateway="*res://Data/Scripts/SignalsGateway.gd"
 
 [display]
 
