@@ -5,18 +5,22 @@ class_name Dialogues
 
 func _ready():
 	
-	SignalsGateway.connect("interacted", self, "_on_DisgistingWell_interacted")
+	SignalsGateway.connect("interacted", self, "_on_DisgustingWell_interacted")
 	print("signals loaded")
 	
-func _on_DisgustingWell_interacted(body,target):
+func _on_DisgustingWell_interacted(body, target):	
 	
-	print("signal recieved")
-	$DialogueBox.start()
-	Globals.mouseLocked = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	body.set_physics_process(false)
-	body.set_process_input(false)
-	player = body
+	print("signal received from ", target, " to >>>> ", body)
+	
+	if target.name == "DisgustingWell":
+		$DialogueBox.start()
+		Globals.mouseLocked = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		body.set_physics_process(false)
+		body.set_process_input(false)
+		player = body
+	else:
+		print('thats not damn well')
 
 func _on_DialogueBox_dialogue_ended():
 	pass # Replace with function body.
@@ -33,3 +37,5 @@ func get_signals():
 		obj.connect("interacted", self, "interacted")
 		print("singal connected for: ", obj)
 	print("dialogues ready")
+
+
