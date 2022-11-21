@@ -1,0 +1,26 @@
+name: Build for Linux
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  Godot:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@v1.4.1
+        with:
+          name: insane_rpg.x86_64
+          preset: linux
+          debugMode: "true"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: insane_rpg - Linux x86_64 build
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
