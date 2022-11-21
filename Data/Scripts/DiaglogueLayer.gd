@@ -8,7 +8,7 @@ func _ready():
 	SignalsGateway.connect("interacted", self, "_on_DisgistingWell_interacted")
 	print("signals loaded")
 	
-func _on_DisgustingWell_interacted(body):
+func _on_DisgustingWell_interacted(body,target):
 	
 	print("signal recieved")
 	$DialogueBox.start()

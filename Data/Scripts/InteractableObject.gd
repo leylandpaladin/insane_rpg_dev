@@ -12,8 +12,8 @@ func get_interaction_text():
 
 func interact(body):
 	print(body, " <<<<< interacted with >>>>> ", name)
-	SignalsGateway.emit_signal("interacted", body)
-	print("signal emited")
+	SignalsGateway.emit_signal("interacted", body, self)
+	print("signal emited to: ", body, " from ", self)
 	
 
 

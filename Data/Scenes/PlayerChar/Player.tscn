@@ -778,3 +778,4 @@ text = "This is realy disgusting.
 "
 
 [connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="." method="_on_DialogueBox_dialogue_ended"]
+[connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
