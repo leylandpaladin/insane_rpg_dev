@@ -24,38 +24,6 @@ transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 56.43
 [node name="Interractable_Object_Test" parent="." groups=["interactable"] instance=ExtResource( 3 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 68.6112, -10.4766, -4.466 )
 
-[node name="Control" type="Control" parent="."]
-margin_right = 1918.0
-margin_bottom = 1080.0
-mouse_filter = 2
-
-[node name="InteractionText" type="Label" parent="Control"]
-margin_left = 788.0
-margin_top = 710.0
-margin_right = 1172.0
-margin_bottom = 826.0
-text = "\"E\" to interact  "
-align = 1
-valign = 1
-
-[node name="DEBUG" type="Label" parent="Control"]
-margin_left = -2.0
-margin_right = 298.096
-margin_bottom = 226.0
-rect_scale = Vector2( 2.735, 2.628 )
-text = "DEBUG MODE
-"
-
-[node name="StatusText" type="Label" parent="Control"]
-visible = false
-margin_left = 923.0
-margin_top = 584.0
-margin_right = 1472.0
-margin_bottom = 819.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "This is realy disgusting.
-"
-
 [node name="DisgustingWell" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
