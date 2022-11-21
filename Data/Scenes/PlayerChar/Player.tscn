@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
+[ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=3]
+[ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=4]
+[ext_resource path="res://Data/Scripts/DiaglogueLayer.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.190515
@@ -13,6 +16,9 @@ extents = Vector3( 0.374531, 0.131623, 0.354627 )
 [sub_resource type="CylinderMesh" id=4]
 
 [sub_resource type="CapsuleMesh" id=3]
+
+[sub_resource type="RichTextEffect" id=5]
+script = ExtResource( 3 )
 
 [node name="Player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
@@ -59,3 +65,234 @@ fov = 61.0
 [node name="Appearance" type="MeshInstance" parent="."]
 transform = Transform( 0.4, 0, 0, 0, -0.00913776, 0.49987, 0, -0.399896, -0.0114222, -0.0290444, 0.551751, -0.0259961 )
 mesh = SubResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1918.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="InteractionText" type="Label" parent="Control"]
+margin_left = 788.0
+margin_top = 710.0
+margin_right = 1172.0
+margin_bottom = 826.0
+text = "\"E\" to interact  "
+align = 1
+valign = 1
+
+[node name="DEBUG" type="Label" parent="Control"]
+margin_left = 1630.0
+margin_top = 23.0
+margin_right = 1930.1
+margin_bottom = 249.0
+rect_scale = Vector2( 2.735, 2.628 )
+text = "DEBUG MODE
+"
+
+[node name="StatusText" type="Label" parent="Control"]
+visible = false
+margin_left = 923.0
+margin_top = 584.0
+margin_right = 1472.0
+margin_bottom = 819.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "This is realy disgusting.
+"
+
+[node name="DiaglogueLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="DialogueBox" type="PopupDialog" parent="DiaglogueLayer"]
+anchor_left = 0.321
+anchor_top = 0.526
+anchor_right = 0.544
+anchor_bottom = 0.728
+margin_right = 300.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 300, 72 )
+popup_exclusive = true
+script = ExtResource( 4 )
+dialogue_file = "res://Data/Dialogues/well.json"
+start_id = "1"
+options_alignment = 1
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="MarginContainer" type="MarginContainer" parent="DiaglogueLayer/DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer"]
+margin_right = 720.0
+margin_bottom = 282.0
+
+[node name="Label" type="Label" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 14.0
+text = "Speaker"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 720.0
+margin_bottom = 258.0
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Sample dialogue.
+Load a [u]dialogue file[/u]."
+text = "Sample dialogue.
+Load a dialogue file."
+scroll_following = true
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer"]
+margin_top = 262.0
+margin_right = 720.0
+margin_bottom = 282.0
+alignment = 1
+
+[node name="Button" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 218.0
+margin_right = 286.0
+margin_bottom = 20.0
+text = "Option 1"
+
+[node name="Button2" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 290.0
+margin_right = 358.0
+margin_bottom = 20.0
+text = "Option 2"
+
+[node name="Button3" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 362.0
+margin_right = 430.0
+margin_bottom = 20.0
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 434.0
+margin_right = 502.0
+margin_bottom = 20.0
+text = "Option 4"
+
+[node name="MarginContainer2" type="MarginContainer" parent="DiaglogueLayer/DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer2"]
+margin_right = 720.0
+margin_bottom = 282.0
+
+[node name="Label" type="Label" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer"]
+text = "Speaker"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer"]
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Sample dialogue.
+Load a [u]dialogue file[/u]."
+text = "Sample dialogue.
+Load a dialogue file."
+scroll_following = true
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer"]
+alignment = 1
+
+[node name="Button" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer/HBoxContainer"]
+text = "Option 1"
+
+[node name="Button2" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer/HBoxContainer"]
+text = "Option 2"
+
+[node name="Button3" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer/HBoxContainer"]
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer2/VBoxContainer/HBoxContainer"]
+text = "Option 4"
+
+[node name="MarginContainer3" type="MarginContainer" parent="DiaglogueLayer/DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer3"]
+margin_right = 720.0
+margin_bottom = 282.0
+
+[node name="Label" type="Label" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer"]
+text = "Speaker"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer"]
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Sample dialogue.
+Load a [u]dialogue file[/u]."
+text = "Sample dialogue.
+Load a dialogue file."
+scroll_following = true
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer"]
+alignment = 1
+
+[node name="Button" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer/HBoxContainer"]
+text = "Option 1"
+
+[node name="Button2" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer/HBoxContainer"]
+text = "Option 2"
+
+[node name="Button3" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer/HBoxContainer"]
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer3/VBoxContainer/HBoxContainer"]
+text = "Option 4"
+
+[node name="MarginContainer4" type="MarginContainer" parent="DiaglogueLayer/DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer4"]
+margin_right = 720.0
+margin_bottom = 282.0
+
+[node name="Label" type="Label" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer"]
+text = "Speaker"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer"]
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Sample dialogue.
+Load a [u]dialogue file[/u]."
+text = "Sample dialogue.
+Load a dialogue file."
+scroll_following = true
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer"]
+alignment = 1
+
+[node name="Button" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer/HBoxContainer"]
+text = "Option 1"
+
+[node name="Button2" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer/HBoxContainer"]
+text = "Option 2"
+
+[node name="Button3" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer/HBoxContainer"]
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="DiaglogueLayer/DialogueBox/MarginContainer4/VBoxContainer/HBoxContainer"]
+text = "Option 4"
