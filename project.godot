@@ -59,6 +59,7 @@ enabled=PoolStringArray( "res://addons/dialogue_nodes/plugin.cfg" )
 [global]
 
 addons=false
+video=false
 
 [gui]
 

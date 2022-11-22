@@ -10,11 +10,11 @@ data = PoolVector3Array( -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0,
 [node name="Leipzig_outskirts" instance=ExtResource( 2 )]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485899, 0.121545, 34.4537 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485899, 2.67757, 34.4537 )
 
-[node name="StaticBody" type="StaticBody" parent="Plane" index="0"]
+[node name="StaticBody2" type="StaticBody" parent="Plane" index="0"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody2" index="0"]
 shape = SubResource( 1 )
 
 [node name="Leipzig_church" parent="." index="2" instance=ExtResource( 3 )]
