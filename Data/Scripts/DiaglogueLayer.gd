@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var player = null	
 class_name Dialogues
-
+var start_id = "1"
 
 onready var dialogueWindow = $DialogueBox
 
@@ -16,8 +16,6 @@ func on_Interaction(body, target):
 	print("signal received from ", target, " to >>>> ", body)
 	
 	lock_control(body)	
-	var start_id = "1"
-	
 	if target.obj_name != "":		
 		start_dialogue_file(target, start_id)
 			
@@ -58,8 +56,6 @@ func unlock_control():
 
 func start_dialogue_file(target, start_id):
 					
-	var path = "res://Data/Dialogues/%s.json" % [target.obj_name]
-	print(path)
 	dialogueWindow.load_file("res://Data/Dialogues/%s.json" % [target.obj_name])
 	dialogueWindow.start("1")
 
