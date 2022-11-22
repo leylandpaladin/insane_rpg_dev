@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Data/assets/untitled.glb" type="PackedScene" id=1]
+[ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+
+[node name="Leipzig_Outskirts" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.989211, -0.146497, 0, 0.146497, 0.989211, 0, 0, 0, 1, 41.4502, 3.98739, 50.4582 )
+
+[node name="untitled" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.8174, -0.97961, 134.914 )
+
+[node name="MeshInstance" type="MeshInstance" parent="untitled"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3865, -44.8111, -125.676 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="untitled/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="untitled/MeshInstance/StaticBody"]
+shape = SubResource( 1 )
