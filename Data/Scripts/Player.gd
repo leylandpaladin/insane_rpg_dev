@@ -34,6 +34,7 @@ func get_input():
 		get_tree().quit()
 	if Input.is_action_just_pressed("change_cameramode"):
 		change_camera_mode()
+	
 	# Нормализирует инпут таким образом что мы не сможем слишком быстро стрейфится
 	input_dir = input_dir.normalized() 
 	
@@ -88,5 +89,6 @@ func _process(delta):
 	
 	pass
 	
+
 
 
