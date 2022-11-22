@@ -57,5 +57,11 @@ func unlock_control():
 func start_dialogue_file(target, start_id):
 					
 	dialogueWindow.load_file("res://Data/Dialogues/%s.json" % [target.obj_name])
-	dialogueWindow.start("1")
+	dialogueWindow.start(start_id)
+
+
+
+func _on_DialogueBox_dialogue_signal(Opened):
+	print("got ya")
+	get_tree().change_scene("res://Data/Scenes/BasementOfDoom.tscn")
 
