@@ -52,6 +52,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0.143 )
 
 [node name="Camera_1st" type="Camera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117897, 0 )
+far = 1432.5
 
 [node name="InteractionRay" type="RayCast" parent="Pivot/Camera_1st"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117897, 0 )

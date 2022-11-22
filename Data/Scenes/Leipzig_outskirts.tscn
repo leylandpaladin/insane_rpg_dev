@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/assets/untitled.glb" type="PackedScene" id=2]
@@ -6,6 +6,24 @@
 
 [sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
+
+[sub_resource type="PanoramaSky" id=3]
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+background_sky = SubResource( 3 )
+background_color = Color( 0.298039, 0.305882, 0.376471, 1 )
+ambient_light_color = Color( 0.427451, 0.443137, 0.494118, 1 )
+ambient_light_sky_contribution = 0.91
+fog_color = Color( 0.592157, 0.52549, 0.643137, 1 )
+fog_sun_color = Color( 1, 1, 1, 1 )
+fog_depth_begin = 48.1
+fog_depth_end = 99.4
+fog_depth_curve = 5.46416
+auto_exposure_min_luma = 0.34
+auto_exposure_max_luma = 8.29
+auto_exposure_speed = 0.01
+glow_intensity = 1.26
 
 [node name="Leipzig_outskirts" instance=ExtResource( 2 )]
 
@@ -19,3 +37,17 @@ shape = SubResource( 1 )
 
 [node name="Leipzig_church" parent="." index="2" instance=ExtResource( 3 )]
 transform = Transform( -3, 0, 0.00408385, 0, 3, 0, -0.00408385, 0, -3, 0.142041, -4.76837e-07, -40.7048 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
+transform = Transform( -0.0320098, -0.853187, -0.520623, -0.107189, -0.514955, 0.850489, -0.993723, 0.0830292, -0.074969, 0, 64.0531, -67.6701 )
+light_color = Color( 0.972549, 0.819608, 0, 1 )
+light_energy = 0.304
+light_indirect_energy = 1.139
+light_specular = 0.513
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.23
+directional_shadow_max_distance = 6.0
