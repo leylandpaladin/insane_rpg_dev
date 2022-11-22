@@ -39,13 +39,11 @@ _global_script_class_icons={
 [application]
 
 config/name="insane_rpg_dev"
-run/main_scene="res://Data/Scenes/Testing_room_01.tscn"
-
 
 [autoload]
 
 Globals="*res://Data/Scripts/Globals.gd"
-ToolsCustom="*res://Data/Scripts/tests/Tools_Custom.gd"
+SignalsGateway="*res://Data/Scripts/SignalsGateway.gd"
 
 [display]
 

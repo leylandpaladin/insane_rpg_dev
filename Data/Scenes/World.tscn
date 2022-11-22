@@ -1,17 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/Scenes/00TestLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Data/InterractableObjects/Interractable_Object_Test.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Well_00.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Data/Scripts/InteractableObject.gd" type="Script" id=5]
-[ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=6]
-[ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=7]
-[ext_resource path="res://Data/Scripts/DiaglogueLayer.gd" type="Script" id=8]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Market_stall.tscn" type="PackedScene" id=9]
-
-[sub_resource type="RichTextEffect" id=1]
-script = ExtResource( 6 )
 
 [node name="World" type="Spatial"]
 
@@ -21,45 +16,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5684, -14.0326, -0.609467 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 56.431, -14.4437, 0.387481 )
 
-[node name="Interractable_Object_Test" parent="." groups=["interactable"] instance=ExtResource( 3 )]
+[node name="GenericObject" parent="." groups=["interactable"] instance=ExtResource( 3 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 68.6112, -10.4766, -4.466 )
 
-[node name="Control" type="Control" parent="."]
-margin_right = 1918.0
-margin_bottom = 1080.0
-mouse_filter = 2
-
-[node name="InteractionText" type="Label" parent="Control"]
-margin_left = 788.0
-margin_top = 710.0
-margin_right = 1172.0
-margin_bottom = 826.0
-text = "\"E\" to interact  "
-align = 1
-valign = 1
-
-[node name="DEBUG" type="Label" parent="Control"]
-margin_left = -2.0
-margin_right = 298.096
-margin_bottom = 226.0
-rect_scale = Vector2( 2.735, 2.628 )
-text = "DEBUG MODE
-"
-
-[node name="StatusText" type="Label" parent="Control"]
-visible = false
-margin_left = 923.0
-margin_top = 584.0
-margin_right = 1472.0
-margin_bottom = 819.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "This is realy disgusting.
-"
-
-[node name="DisgustingWell" parent="." instance=ExtResource( 4 )]
+[node name="WELL" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
 script = ExtResource( 5 )
 promt_message = "Drink"
+obj_name = "FckingWell"
 
 [node name="Market_stall" parent="." instance=ExtResource( 9 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )
@@ -70,21 +34,12 @@ promt_message = "Trade"
 transform = Transform( -0.200841, 0.728192, -0.655286, 0.213389, 0.685374, 0.696224, 0.9561, 0, -0.293039, 81.0608, -5.56944, -25.6296 )
 light_energy = 2.516
 
-[node name="DiaglogueLayer" type="CanvasLayer" parent="."]
-script = ExtResource( 8 )
+[node name="Alexey" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 68.3411, -11.5288, -24.3791 )
+promt_message = "Speak"
+obj_name = "Alexey"
 
-[node name="DialogueBox" type="PopupDialog" parent="DiaglogueLayer"]
-margin_left = 936.0
-margin_top = 479.0
-margin_right = 1556.0
-margin_bottom = 692.0
-rect_min_size = Vector2( 300, 72 )
-popup_exclusive = true
-script = ExtResource( 7 )
-dialogue_file = "res://Data/Dialogues/well.json"
-start_id = "well_diaglogue_start"
-options_alignment = 0
-custom_effects = [ SubResource( 1 ) ]
-
-[connection signal="interacted" from="DisgustingWell" to="DiaglogueLayer" method="_on_Disgusting_well_interacted"]
-[connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
+[node name="Nikolay" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 64.6995, -10.2331, -38.2398 )
+promt_message = "Speak"
+obj_name = "Nikolay"
