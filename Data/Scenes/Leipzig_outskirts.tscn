@@ -3,7 +3,7 @@
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/assets/untitled.glb" type="PackedScene" id=2]
 [ext_resource path="res://Data/Scenes/Leipzig_church.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Data/Scenes/WorldEnvironment.gd" type="Script" id=4]
+[ext_resource path="res://Data/Scripts/WorldEnvironment.gd" type="Script" id=4]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
@@ -14,17 +14,18 @@ sky_horizon_color = Color( 0.286275, 0.333333, 0.372549, 1 )
 sky_energy = 0.1
 ground_bottom_color = Color( 0.145098, 0.12549, 0.14902, 1 )
 ground_horizon_color = Color( 0, 0, 0, 1 )
+ground_energy = 0.0
 sun_color = Color( 0.772549, 0.886275, 0.792157, 1 )
-sun_latitude = -5.78
+sun_latitude = 180.0
 sun_angle_max = 84.44
-sun_energy = 1.67
+sun_energy = 8.7422
 
 [sub_resource type="Environment" id=3]
 background_mode = 2
 background_sky = SubResource( 2 )
 
 [sub_resource type="Animation" id=4]
-length = 0.001
+length = 40.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:environment:background_sky:sun_latitude")
 tracks/0/interp = 1
@@ -32,10 +33,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -5.78 ]
+"values": [ 180.0, -180.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:environment:background_sky:sun_energy")
@@ -44,34 +45,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.2, 19.1, 40 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 1.67 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:environment:background_sky:sky_energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:environment:background_sky:sky_top_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.431373, 0.788235, 0.894118, 1 ) ]
+"values": [ 1.67, 20.61, 0.88 ]
 }
 
 [sub_resource type="Animation" id=5]
