@@ -39,12 +39,17 @@ _global_script_class_icons={
 [application]
 
 config/name="insane_rpg_dev"
+
 run/main_scene="res://Data/Scenes/Leipzig_outskirts.tscn"
+
+
 
 [autoload]
 
 Globals="*res://Data/Scripts/Globals.gd"
 SignalsGateway="*res://Data/Scripts/SignalsGateway.gd"
+GameSettings="*res://Data/Scripts/GameSettings.gd"
+GameConfigHandler="*res://Data/Scripts/GameConfigHandler.gd"
 
 [display]
 
