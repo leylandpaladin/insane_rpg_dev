@@ -39,7 +39,10 @@ _global_script_class_icons={
 [application]
 
 config/name="insane_rpg_dev"
-run/main_scene="res://NPC.tscn"
+
+run/main_scene="res://Data/Scenes/Leipzig_outskirts.tscn"
+
+
 
 [autoload]
 
@@ -62,6 +65,7 @@ enabled=PoolStringArray( "res://addons/dialogue_nodes/plugin.cfg" )
 [global]
 
 addons=false
+video=false
 
 [gui]
 

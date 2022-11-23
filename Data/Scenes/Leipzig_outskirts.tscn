@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Data/assets/untitled.glb" type="PackedScene" id=2]
+[ext_resource path="res://Data/Scenes/Leipzig_church.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Data/Scenes/WorldEnvironment.gd" type="Script" id=4]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
+
+[sub_resource type="ProceduralSky" id=2]
+sky_top_color = Color( 0.431373, 0.788235, 0.894118, 1 )
+sky_horizon_color = Color( 0.286275, 0.333333, 0.372549, 1 )
+sky_energy = 0.1
+ground_bottom_color = Color( 0.145098, 0.12549, 0.14902, 1 )
+ground_horizon_color = Color( 0, 0, 0, 1 )
+sun_color = Color( 0.772549, 0.886275, 0.792157, 1 )
+sun_latitude = -5.78
+sun_angle_max = 84.44
+sun_energy = 1.67
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:environment:background_sky:sun_latitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -5.78 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:environment:background_sky:sun_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.67 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:environment:background_sky:sky_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:environment:background_sky:sky_top_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 0.788235, 0.894118, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "cycle"
+length = 40.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:environment:background_sky:sun_latitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, -180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:environment:background_sky:sun_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.67, 10.36 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:environment:background_sky:sky_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 19.9, 40 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.1, 5.63, 0.155025 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:environment:background_sky:sky_top_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.1, 19.9, 37.6, 39.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.721569, 1, 1 ), Color( 0.196078, 0.188235, 0.25098, 1 ), Color( 0.0313726, 0.0901961, 0.109804, 1 ), Color( 0.000255063, 0.716435, 0.992763, 1 ) ]
+}
+
+[node name="Leipzig_outskirts" instance=ExtResource( 2 )]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485899, 2.67757, 34.4537 )
+
+[node name="StaticBody2" type="StaticBody" parent="Plane" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody2" index="0"]
+shape = SubResource( 1 )
+
+[node name="Leipzig_church" parent="." index="2" instance=ExtResource( 3 )]
+transform = Transform( -3, 0, 0.00408385, 0, 3, 0, -0.00408385, 0, -3, 0.142041, -4.76837e-07, -40.7048 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource( 3 )
+script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment" index="0"]
+anims/RESET = SubResource( 4 )
+anims/cycle = SubResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
+transform = Transform( -0.0320098, -0.853187, -0.520623, -0.107189, -0.514955, 0.850489, -0.993723, 0.0830292, -0.074969, 0, 64.0531, -67.6701 )
+light_color = Color( 0.396078, 0.305882, 0.439216, 1 )
+light_energy = 1.417
+light_indirect_energy = 1.139
+light_specular = 1.487
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.23
+directional_shadow_max_distance = 6.0

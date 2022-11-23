@@ -20,6 +20,7 @@ func get_input():
 
 	if Input.is_action_pressed("move_forward"):
 		input_dir += -global_transform.basis.z
+	
 	if Input.is_action_pressed("move_back"):
 		input_dir += global_transform.basis.z
 	# Трасформируем координату X чтобы двигаться в разные стороны, по тому же принципу что с движениями вперед/назад.
