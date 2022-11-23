@@ -1,33 +1,8 @@
 extends Node
 
 var config_file_path = Globals.config_file_path
-
-func init_config_file(path):
-	var config = ConfigFile.new()
-
-	# Store default values
-	config.set_value("GameSettings", "locale", GameSettings.locale)
-
-	# Save default values to a file
-	config.save(path)
 	
-	#Return ConfigFile instance
-	return config
-
-func read_config_file(config_path):
-	var config = ConfigFile.new()
-
-	# Load config data from a file.	
-	var config_loaded = config.load(config_path)
-	
-	# Create default config file if it could not be read
-	if config_loaded != OK:
-		config = init_config_file(config_path)
-	
-	#Return ConfigFile instance
-	return config
-
-func save_config(config):
+func save_config_file(config):
 	# Saves current settings to config file
 	
 	# Sync dictionary settings to actual in-memory values
@@ -42,6 +17,19 @@ func save_config(config):
 	# Write to config file
 	config.save(config_file_path)
 	
+func load_config_file(config_path):
+	var config = ConfigFile.new()
+
+	# Load config data from a file.	
+	var config_loaded = config.load(config_path)
+	
+	# Create default config file if it could not be read
+	if config_loaded != OK:
+		save_config_file(config)
+	
+	#Return ConfigFile instance
+	return config
+
 func apply_config(config):
 	# Set variables in GameSettings according to config file contents
 	
@@ -53,5 +41,5 @@ func apply_config(config):
 	GameSettings.load_settings_from_dict()
 
 func _init():
-	var Config = read_config_file(config_file_path)
+	var Config = load_config_file(config_file_path)
 	apply_config(Config)
