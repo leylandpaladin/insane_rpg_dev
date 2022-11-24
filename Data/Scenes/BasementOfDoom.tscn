@@ -26,10 +26,11 @@ script = ExtResource( 7 )
 promt_message = "Drink"
 promt_action = "Drink"
 obj_name = "Fckingwell"
-description = "The well is stinky as fck, wanna dring from it?"
+description = "The well is stinky as fck, wanna drink from it? BUT BE WARNED, YOU WILL BECOME GREEN"
 accept_before_process = true
 ObjectType = 3
 EffectDone = 99
+used_once_line = "Ur already green lad))"
 
 [node name="Market_stall" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )
