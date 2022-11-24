@@ -28,14 +28,37 @@ func dialogue_signal_handler(value):
 
 func on_Interaction(body, target):	
 	
-	print("signal received from ", target, " to >>>> ", body)
+	print("signal received from ", target.obj_name, " to >>>> ", body.name)
+	#lock_control(body)	
 	
-	lock_control(body)	
-	if target.obj_name != "":		
-		start_dialogue_file(target, start_id)
+	match target.ObjectType:
+		
+		0:
+			print(target.obj_name, " is door")			
+			if target.DoorType == 0 and target.InterlocationDoor:
+				if target.ScenePath == "":
+					print("No scene to teleport in")	
+				else:							
+					print("Attemping to teleport to: ", target.ScenePath)	
+					get_tree().change_scene_to(load(target.ScenePath))
+					
+					
+			elif not target.InterlocationDoor:
+				print(" .... Playing opening anim")
+		1:
+			print(body.name, " is NPC")
+		
+		2: 
+			print(body.name, " is container")
 			
-	else:
-		print('fck you')
+		3: 
+			print(body.name, " is has_effect")
+	
+	#if target.obj_name != "":		
+	#	start_dialogue_file(target, start_id)
+	#		
+	#else:
+	#	print('fck you')
 
 func _on_DialogueBox_dialogue_ended():
 	unlock_control()
