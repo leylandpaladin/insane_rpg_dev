@@ -85,7 +85,7 @@ promt_message = "Open"
 obj_name = "ChurchDoor"
 LockLevel = -1
 InterlocationDoor = true
-ScenePath = "\"res://Data/Scenes/BasementOfDoom.tscn\""
+ScenePath = "res://Data/Scenes/BasementOfDoom.tscn"
 
 [node name="CollisionShape" type="CollisionShape" parent="MainDoor" index="0"]
 transform = Transform( 1, 0, 0, 0, 2.30517, 0, 0, 0, 0.268971, 0, 1.17095, -22.6972 )

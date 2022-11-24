@@ -23,6 +23,7 @@ transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.13
 script = ExtResource( 3 )
 promt_message = "Drink"
 obj_name = "FckingWell"
+ObjectType = 3
 
 [node name="Market_stall" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )

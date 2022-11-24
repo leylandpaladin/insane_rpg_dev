@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "Dialogues",
 "language": "GDScript",
-"path": "res://Data/Scripts/DiaglogueLayer.gd"
+"path": "res://Data/Scripts/IntractionLayer.gd"
 }, {
 "base": "Node",
 "class": "Interactable",
