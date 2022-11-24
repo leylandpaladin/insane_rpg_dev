@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Data/Scenes/00TestLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Well_00.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Data/InterractableObjects/Interractable_Object_Test.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Market_stall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Data/Scripts/EffectObject.gd" type="Script" id=7]
 
 [node name="Basement_of_Doom" type="Spatial"]
 
@@ -17,13 +18,18 @@ transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 56.43
 
 [node name="GenericObject" parent="." groups=["interactable"] instance=ExtResource( 4 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 68.6112, -10.4766, -4.466 )
+ObjectType = -1
 
 [node name="WELL" parent="." instance=ExtResource( 2 )]
 transform = Transform( 3.41254, 0, 3.65439, 0, 5, 0, -3.65439, 0, 3.41254, 98.1322, -14.1707, -2.59265 )
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 promt_message = "Drink"
-obj_name = "FckingWell"
+promt_action = "Drink"
+obj_name = "Fckingwell"
+description = "The well is stinky as fck, wanna dring from it?"
+accept_before_process = true
 ObjectType = 3
+EffectDone = 99
 
 [node name="Market_stall" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )

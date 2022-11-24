@@ -1,13 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
 [ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=3]
 [ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=4]
-[ext_resource path="res://Data/Scripts/IntractionLayer.gd" type="Script" id=5]
-
-[sub_resource type="RichTextEffect" id=5]
-script = ExtResource( 3 )
+[ext_resource path="res://Data/Scripts/InteractionLayer.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.190515
@@ -27,21 +24,17 @@ material = SubResource( 8 )
 
 [sub_resource type="SpatialMaterial" id=9]
 
+[sub_resource type="RichTextEffect" id=5]
+script = ExtResource( 3 )
+
+[sub_resource type="Theme" id=10]
+
+[sub_resource type="Theme" id=11]
+Button/colors/font_color = Color( 0, 1, 0.0862745, 1 )
+Button/styles/hover = null
+
 [node name="Player" type="KinematicBody" groups=["Player"]]
 script = ExtResource( 1 )
-
-[node name="IntractionLayer" type="CanvasLayer" parent="."]
-script = ExtResource( 5 )
-
-[node name="DialogueBox" type="PopupDialog" parent="IntractionLayer"]
-margin_left = 444.0
-margin_top = 267.0
-margin_right = 1389.0
-margin_bottom = 785.0
-rect_min_size = Vector2( 300, 72 )
-popup_exclusive = true
-script = ExtResource( 4 )
-custom_effects = [ SubResource( 5 ) ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0.505266, -0.0383236 )
@@ -86,10 +79,10 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 9 )
 
 [node name="Control" type="Control" parent="."]
-margin_left = -2.0
-margin_top = 4.0
-margin_right = 1916.0
-margin_bottom = 1084.0
+margin_left = 3.0
+margin_top = -6.0
+margin_right = 1921.0
+margin_bottom = 1074.0
 mouse_filter = 2
 
 [node name="InteractionText" type="Label" parent="Control"]
@@ -120,5 +113,51 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "This is realy disgusting.
 "
 
+[node name="IntractionLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="DialogueBox" type="PopupDialog" parent="IntractionLayer"]
+margin_left = 444.0
+margin_top = 267.0
+margin_right = 1389.0
+margin_bottom = 785.0
+rect_min_size = Vector2( 300, 72 )
+popup_exclusive = true
+script = ExtResource( 4 )
+custom_effects = [ SubResource( 5 ) ]
+
+[node name="InteractionDialogue" type="ColorRect" parent="IntractionLayer"]
+visible = false
+margin_left = 661.0
+margin_top = 430.0
+margin_right = 1296.0
+margin_bottom = 691.0
+theme = SubResource( 10 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="InteractionDialogueText" type="RichTextLabel" parent="IntractionLayer/InteractionDialogue"]
+margin_left = 52.0
+margin_top = 35.0
+margin_right = 562.0
+margin_bottom = 184.0
+text = "123"
+
+[node name="nah" type="Button" parent="IntractionLayer/InteractionDialogue"]
+margin_left = 328.0
+margin_top = 171.0
+margin_right = 457.0
+margin_bottom = 235.0
+text = "Leave"
+
+[node name="ye" type="Button" parent="IntractionLayer/InteractionDialogue"]
+margin_left = 125.0
+margin_top = 172.0
+margin_right = 256.0
+margin_bottom = 235.0
+theme = SubResource( 11 )
+text = "ye"
+
 [connection signal="dialogue_ended" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_ended"]
 [connection signal="dialogue_signal" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_signal"]
+[connection signal="pressed" from="IntractionLayer/InteractionDialogue/nah" to="IntractionLayer" method="_on_nah_pressed"]
+[connection signal="pressed" from="IntractionLayer/InteractionDialogue/ye" to="IntractionLayer" method="_on_ye_pressed" binds= [ "body", "target" ]]

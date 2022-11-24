@@ -10,6 +10,7 @@ var velocity = Vector3()
 
 # ! SET MOUSE MODE Означает что игра захватывает мышь
 func _ready():
+	get_signals()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 # Получаем инпут игрока
 func get_input():
@@ -91,5 +92,11 @@ func _process(delta):
 	pass
 	
 
-
+func get_signals():
+	
+	var interactable_objects = get_tree().get_nodes_in_group("Interactable")
+	for obj in interactable_objects:
+		obj.connect("interacted", self, "interacted")
+		print("singal connected for: ", obj)
+	print("dialogues ready")
 

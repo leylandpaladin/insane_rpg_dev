@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogue_nodes/objects/dialogueBox.gd"
 }, {
-"base": "CanvasLayer",
-"class": "Dialogues",
-"language": "GDScript",
-"path": "res://Data/Scripts/IntractionLayer.gd"
-}, {
 "base": "Node",
 "class": "Interactable",
 "language": "GDScript",
@@ -31,7 +26,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DialogueBox": "",
-"Dialogues": "",
 "Interactable": "",
 "RichTextWait": ""
 }
@@ -47,6 +41,7 @@ Globals="*res://Data/Scripts/Globals.gd"
 SignalsGateway="*res://Data/Scripts/SignalsGateway.gd"
 GameSettings="*res://Data/Scripts/GameSettings.gd"
 GameConfigHandler="*res://Data/Scripts/GameConfigHandler.gd"
+Effects="*res://Data/Scripts/Effects.gd"
 
 [display]
 
