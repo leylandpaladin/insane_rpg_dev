@@ -108,6 +108,7 @@ SignalsGateway="*res://Data/Scripts/SignalsGateway.gd"
 GameSettings="*res://Data/Scripts/GameSettings.gd"
 GameConfigHandler="*res://Data/Scripts/GameConfigHandler.gd"
 Effects="*res://Data/Scripts/Effects.gd"
+Enums="*res://Data/Scripts/GlobalEnums.gd"
 
 [display]
 
