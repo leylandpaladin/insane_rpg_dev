@@ -7,7 +7,7 @@ export (EFFECTS) var EffectDone
 export var usedOnce := false
 
 export var used_once_line := ""
-export var magnitude := 0
+export (float) var magnitude = 0
 
 
 

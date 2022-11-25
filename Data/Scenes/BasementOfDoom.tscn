@@ -31,6 +31,7 @@ accept_before_process = true
 ObjectType = 3
 EffectDone = 99
 used_once_line = "Ur already green lad))"
+magnitude = 0.1
 
 [node name="Market_stall" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 95.3647, -14.8702, -16.9496 )

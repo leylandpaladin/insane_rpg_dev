@@ -83,7 +83,6 @@ shape = SubResource( 9 )
 script = ExtResource( 2 )
 promt_message = "Open"
 obj_name = "ChurchDoor"
-DoorType = 1
 LockLevel = -1
 InterlocationDoor = true
 ScenePath = "res://Data/Scenes/BasementOfDoom.tscn"

@@ -6,16 +6,16 @@ var body2 = null
 var target2 = null
 
 onready var dialogueWindow = $DialogueBox
-onready var interactionDialgoue = $InteractionDialog
 onready var player_skin = $"../Appearance"
 onready var player_nose = $"../Pivot/Camera_1st/Nose"
-onready var player_test = $Player
+onready var timer = $"../Control/InfoLayer/Timer"
+onready var info_layer =  $"../Control/InfoLayer"
 func _ready():
 	
 	SignalsGateway.connect("interacted", self, "on_Interaction")
 	SignalsGateway.connect("pressed", self, "on_ui_accept")
 	SignalsGateway.connect("interact_effect", self, "on_Interaction_effect")
-	dialogueWindow.connect("dialogue_signal", self, "dialogue_signal_handler")
+	timer.connect("timeout", info_layer, "timeout")
 	print("signals loaded")
 	
 		
@@ -84,10 +84,18 @@ func on_Interaction_effect(body, target):
 	match target.EffectDone:
 		
 		99: # WELL SPECIAL EFFECT					
-			if not Effects.player_green:
-				print(Effects.player_green)
-				print("REGISTERING CASE 99 HERE")
-				Effects.player_green(player_skin, player_nose)
+			
+			Effects.player_green_effect(player_skin, player_nose, target.magnitude)
+			
+			if target.magnitude <= 1:
+				target.magnitude += 0.1
+				infolayer_showtext(target.magnitude, 3)
+			else:
+				target.accept_before_process = false
+				infolayer_showtext("Depleted", 3)
+	
+				
+			
 			
 
 	
@@ -97,6 +105,7 @@ func _on_ye_pressed(body, target):
 	target = target2
 	
 	if target.ObjectType == 3:
+		
 		SignalsGateway.emit_signal("interact_effect", body, target)	
 		$InteractionDialogue.hide()
 		unlock_control()
@@ -132,17 +141,20 @@ func unlock_control():
 func _on_InteractionDialogue_popup_hide():
 	unlock_control()
 
+func infolayer_showtext(text, seconds):
+	
+	var text_shown
+	info_layer.show()
+	text_shown = "current value is: " + str(text)
+	info_layer.set_text(text_shown)
+	timer.wait_time = seconds
+	timer.start()
+	print("Timer start for: ", seconds, "seconds")
 
 
 
-
-
-
-
-
-
-
-
-
-
+func _on_Timer_timeout():
+	
+	print("!!!!!!!!!!!!timeout!!!!!!!!!!!!!!!")
+	info_layer.hide()
 

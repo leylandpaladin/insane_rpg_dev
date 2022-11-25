@@ -113,6 +113,17 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "This is realy disgusting.
 "
 
+[node name="InfoLayer" type="Label" parent="Control"]
+visible = false
+margin_left = 863.0
+margin_top = 130.0
+margin_right = 1043.0
+margin_bottom = 150.0
+rect_scale = Vector2( 2.539, 2.532 )
+text = "PLACEHOLDER INFOLAYER"
+
+[node name="Timer" type="Timer" parent="Control/InfoLayer"]
+
 [node name="IntractionLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
 
@@ -157,6 +168,7 @@ margin_bottom = 235.0
 theme = SubResource( 11 )
 text = "ye"
 
+[connection signal="timeout" from="Control/InfoLayer/Timer" to="IntractionLayer" method="_on_Timer_timeout"]
 [connection signal="dialogue_ended" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_ended"]
 [connection signal="dialogue_signal" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_signal"]
 [connection signal="pressed" from="IntractionLayer/InteractionDialogue/nah" to="IntractionLayer" method="_on_nah_pressed"]
