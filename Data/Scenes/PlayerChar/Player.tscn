@@ -108,6 +108,7 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "This is realy disgusting.
 "
 
+<<<<<<< HEAD
 [node name="InfoLayer" type="Label" parent="Control"]
 visible = false
 margin_left = 863.0
@@ -156,3 +157,13 @@ text = "ye"
 [connection signal="timeout" from="Control/InfoLayer/Timer" to="IntractionLayer" method="_on_Timer_timeout"]
 [connection signal="pressed" from="IntractionLayer/InteractionDialogue/nah" to="IntractionLayer" method="_on_nah_pressed"]
 [connection signal="pressed" from="IntractionLayer/InteractionDialogue/ye" to="IntractionLayer" method="_on_ye_pressed" binds= [ "body", "target" ]]
+=======
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hotbar" parent="UI" instance=ExtResource( 6 )]
+
+[node name="InventoryMenu" parent="UI" instance=ExtResource( 7 )]
+
+[connection signal="dialogue_ended" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_ended"]
+[connection signal="dialogue_signal" from="DiaglogueLayer/DialogueBox" to="DiaglogueLayer" method="_on_DialogueBox_dialogue_signal"]
+>>>>>>> 97e61be (Add UI layer Hotbar InventoryMenu to Player scene)
