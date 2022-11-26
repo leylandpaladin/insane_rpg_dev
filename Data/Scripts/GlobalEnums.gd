@@ -12,5 +12,5 @@ enum ItemType {
 	Quest,
 	Miscellaneous,
 	Key,
-	Initial
+	Initial = -1
 }
