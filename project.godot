@@ -78,6 +78,16 @@ _global_script_classes=[ {
 "class": "RichTextWait",
 "language": "GDScript",
 "path": "res://addons/dialogue_nodes/objects/bbcodeWait.gd"
+}, {
+"base": "default_item",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Data/Scripts/Weapon.gd"
+}, {
+"base": "Resource",
+"class": "default_item",
+"language": "GDScript",
+"path": "res://Data/Scripts/Item.gd"
 } ]
 _global_script_class_icons={
 "DTS": "",
@@ -93,7 +103,9 @@ _global_script_class_icons={
 "DialogueBox": "",
 "HistoryRow": "",
 "Interactable": "",
-"RichTextWait": ""
+"RichTextWait": "",
+"Weapon": "",
+"default_item": ""
 }
 
 [application]
@@ -109,6 +121,7 @@ GameSettings="*res://Data/Scripts/GameSettings.gd"
 GameConfigHandler="*res://Data/Scripts/GameConfigHandler.gd"
 Effects="*res://Data/Scripts/Effects.gd"
 Enums="*res://Data/Scripts/GlobalEnums.gd"
+Inventory="*res://Data/Scripts/Inventory.gd"
 
 [display]
 
