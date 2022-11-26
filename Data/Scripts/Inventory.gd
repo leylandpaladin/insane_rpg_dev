@@ -2,15 +2,21 @@ extends Node
 
 signal items_changed(indexes)
 
-var columns := 9
-var rows := 3
-var slots := columns * rows
+## Test items
+## TODO: make provider and logic for resources
+onready var test_item = preload("res://Data/Resources/Items/Weapons/Sword.tres")
+
+var cols := 8
+var rows := 4
+var slots := cols * rows
 var items = []
 
 func _ready():
 	for i in range(slots):
 		items.append({})
-		
+	for i in 5:
+		items[i] = test_item.duplicate(true)
+	
 func set_item(index, item):
 	var previous_item = items[index]
 	items[index] = item

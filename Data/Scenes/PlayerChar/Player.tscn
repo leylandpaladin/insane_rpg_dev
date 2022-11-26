@@ -90,7 +90,7 @@ columns = 10
 
 [node name="InventoryMenu" parent="UI" instance=ExtResource( 7 )]
 mouse_filter = 0
-columns = 4
+columns = 8
 
 [node name="Control" type="Control" parent="UI"]
 margin_left = -2.0
