@@ -4,5 +4,6 @@
 [ext_resource path="res://Data/Scenes/UI/ItemSlot.tscn" type="PackedScene" id=2]
 
 [node name="InventoryMenu" type="GridContainer"]
+mouse_filter = 0
 script = ExtResource( 1 )
 ItemSlot = ExtResource( 2 )
