@@ -6,3 +6,4 @@ export(Enums.ItemType) var type = Enums.ItemType.Initial
 export(Texture) var icon = null
 export(bool) var stackable = false
 export(int) var quantity = 1
+export(PackedScene) var item_scene = null

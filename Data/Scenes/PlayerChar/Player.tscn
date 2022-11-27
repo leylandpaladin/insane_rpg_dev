@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
@@ -18,6 +18,8 @@ height = 0.438041
 material = SubResource( 6 )
 
 [sub_resource type="SpatialMaterial" id=7]
+
+[sub_resource type="CubeMesh" id=12]
 
 [sub_resource type="SpatialMaterial" id=8]
 
@@ -61,17 +63,22 @@ margin_bottom = 727.0
 text = "PLACEHOLDER"
 
 [node name="Nose" type="MeshInstance" parent="Pivot/Camera_1st"]
-transform = Transform( 0.0404, 0, 0, 0, -0.013154, 0.0454858, 0, -0.501831, -0.00113723, -0.0294444, -0.160076, -0.389416 )
+transform = Transform( 0.0404, 0, 0, 0, -0.013154, 0.0454858, 0, -0.110861, -0.000251228, -0.0294444, -0.240044, -0.398723 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../../Appearance")
 material/0 = SubResource( 7 )
 
 [node name="Weapon" type="Spatial" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.562245, -0.368442, 0 )
 
 [node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 0.954282, 0.298908, 0, -0.298908, 0.954282, 0.586407, 0.450313, 2.0316 )
 current = true
 fov = 61.0
+
+[node name="WeaponHandle" type="MeshInstance" parent="Pivot"]
+transform = Transform( 0.0493089, 0, 0, 0, 0.0493089, 0, 0, 0, 0.381888, 0.384759, -0.31733, -0.541436 )
+mesh = SubResource( 12 )
 
 [node name="Appearance" type="MeshInstance" parent="."]
 transform = Transform( 0.4, 0, 0, 0, -0.00913776, 0.49987, 0, -0.399896, -0.0114222, -0.0290444, 0.551751, -0.0259961 )

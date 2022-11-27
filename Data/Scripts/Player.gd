@@ -82,6 +82,14 @@ func _physics_process(delta):
 
 	# Применям велосити для движения, не до конца понял этот момент, CTRL + LMB - документация.
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	
+
+onready var sword = preload("res://Data/Resources/Items/Weapons/Sword.tres")
+
+func weapon_equip():
+	pass
+	
+	
 
 func change_weapon():
 	pass
