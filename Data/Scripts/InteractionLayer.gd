@@ -1,4 +1,6 @@
-extends CanvasLayer
+extends Node
+tool
+
 
 var player = null	
 var start_id = "1"
@@ -10,6 +12,8 @@ onready var player_skin = $"../Appearance"
 onready var player_nose = $"../Pivot/Camera_1st/Nose"
 onready var timer = $"../Control/InfoLayer/Timer"
 onready var info_layer =  $"../Control/InfoLayer"
+
+
 func _ready():
 	
 	SignalsGateway.connect("interacted", self, "on_Interaction")
@@ -19,8 +23,6 @@ func _ready():
 	print("signals loaded")
 	
 		
-
-
 func on_Interaction(body, target):	
 	
 	body2 = body
@@ -51,7 +53,11 @@ func on_Interaction(body, target):
 			elif not target.InterlocationDoor:
 				print(" .... Playing opening anim")
 		1: # NPC
-			print(body.name, " is NPC")
+			print(target.obj_name, " is NPC")
+			if not target.hostile:
+				start_dialog(target.obj_name, body, target.dialog_index)
+			else:
+				"you can't speak with hostile target"
 		
 		2: # Container
 			print(body.name, " is container")
@@ -154,7 +160,25 @@ func infolayer_showtext(text, seconds):
 
 
 func _on_Timer_timeout():
-	
-	print("!!!!!!!!!!!!timeout!!!!!!!!!!!!!!!")
+
 	info_layer.hide()
 
+
+func start_dialog(target,body, index):
+	var dialog = Dialogic.start(target + str(index))
+	add_child(dialog)
+	print("Playing follwing lines:  ", target + str(index))
+	dialog.pause_mode = PAUSE_MODE_PROCESS
+	dialog.connect("timeline_end", self, "end_dialog")
+	dialog.connect("dialogic_signal", self, "dialog_listener")
+	lock_control(body)
+	
+func end_dialog(data):
+	
+	unlock_control()
+	
+func dialog_listener(string):
+	match string:
+		"alexey_teleporting_you":
+			get_tree().change_scene("res://Data/Scenes/BasementOfDoom.tscn")
+			

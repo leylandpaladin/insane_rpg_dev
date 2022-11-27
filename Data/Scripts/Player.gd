@@ -100,3 +100,4 @@ func get_signals():
 		print("singal connected for: ", obj)
 	print("dialogues ready")
 
+

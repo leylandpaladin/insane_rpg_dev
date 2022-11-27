@@ -7,7 +7,7 @@ export var promt_message := "Interact"
 export var promt_action := "Interact"
 export var obj_name := "Generic"
 export var description := ""
-export var destructable := false
+export var attackable := false
 export var accept_before_process := false
 
 enum TYPE {NONE = -1, DOOR = 0, NPC = 1, CONTAINER = 2, HAS_EFFECT = 3}

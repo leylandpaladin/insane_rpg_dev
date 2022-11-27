@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
-[ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=3]
-[ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=4]
 [ext_resource path="res://Data/Scripts/InteractionLayer.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -23,9 +21,6 @@ material = SubResource( 6 )
 material = SubResource( 8 )
 
 [sub_resource type="SpatialMaterial" id=9]
-
-[sub_resource type="RichTextEffect" id=5]
-script = ExtResource( 3 )
 
 [sub_resource type="Theme" id=10]
 
@@ -55,10 +50,10 @@ collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Promt" type="Label" parent="Pivot/Camera_1st/InteractionRay"]
-margin_left = 691.0
-margin_top = 391.0
-margin_right = 729.0
-margin_bottom = 405.0
+margin_left = 939.0
+margin_top = 713.0
+margin_right = 1031.0
+margin_bottom = 727.0
 text = "PLACEHOLDER"
 
 [node name="Nose" type="MeshInstance" parent="Pivot/Camera_1st"]
@@ -127,16 +122,6 @@ text = "PLACEHOLDER INFOLAYER"
 [node name="IntractionLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
 
-[node name="DialogueBox" type="PopupDialog" parent="IntractionLayer"]
-margin_left = 444.0
-margin_top = 267.0
-margin_right = 1389.0
-margin_bottom = 785.0
-rect_min_size = Vector2( 300, 72 )
-popup_exclusive = true
-script = ExtResource( 4 )
-custom_effects = [ SubResource( 5 ) ]
-
 [node name="InteractionDialogue" type="ColorRect" parent="IntractionLayer"]
 visible = false
 margin_left = 661.0
@@ -169,7 +154,5 @@ theme = SubResource( 11 )
 text = "ye"
 
 [connection signal="timeout" from="Control/InfoLayer/Timer" to="IntractionLayer" method="_on_Timer_timeout"]
-[connection signal="dialogue_ended" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_ended"]
-[connection signal="dialogue_signal" from="IntractionLayer/DialogueBox" to="IntractionLayer" method="_on_DialogueBox_dialogue_signal"]
 [connection signal="pressed" from="IntractionLayer/InteractionDialogue/nah" to="IntractionLayer" method="_on_nah_pressed"]
 [connection signal="pressed" from="IntractionLayer/InteractionDialogue/ye" to="IntractionLayer" method="_on_ye_pressed" binds= [ "body", "target" ]]
