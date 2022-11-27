@@ -64,15 +64,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogue_nodes/objects/dialogueBox.gd"
 }, {
-"base": "PanelContainer",
-"class": "HistoryRow",
-"language": "GDScript",
-"path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
-}, {
 "base": "GridContainer",
 "class": "Grid",
 "language": "GDScript",
 "path": "res://Data/Scripts/Grid.gd"
+}, {
+"base": "PanelContainer",
+"class": "HistoryRow",
+"language": "GDScript",
+"path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
 }, {
 "base": "Node",
 "class": "Interactable",
@@ -111,8 +111,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "DialogueBox": "",
-"HistoryRow": "",
 "Grid": "",
+"HistoryRow": "",
 "Interactable": "",
 "Potion": "",
 "RichTextWait": "",
