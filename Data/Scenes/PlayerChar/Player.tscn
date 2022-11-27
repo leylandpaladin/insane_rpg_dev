@@ -70,6 +70,7 @@ material/0 = SubResource( 7 )
 
 [node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 0.954282, 0.298908, 0, -0.298908, 0.954282, 0.586407, 0.450313, 2.0316 )
+current = true
 fov = 61.0
 
 [node name="Appearance" type="MeshInstance" parent="."]
