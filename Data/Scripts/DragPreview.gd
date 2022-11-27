@@ -12,7 +12,7 @@ func _process(_delta):
 func set_dragged_item(item):
 	dragged_item = item
 	if dragged_item:
-		item_icon.texture = load("res://%s" % dragged_item.icon)
+		item_icon.texture = dragged_item.icon
 		item_quantity.text = str(dragged_item.quantity) if dragged_item.stackable else ""
 	else:
 		item_icon.texture = null

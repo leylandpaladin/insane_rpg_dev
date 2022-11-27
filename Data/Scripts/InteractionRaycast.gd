@@ -3,7 +3,7 @@ extends RayCast
 
 var current_collider
 
-onready var interaction_text = get_node("../../../UI/Control/InteractionText")
+onready var interaction_text = get_node("../../../Control/InteractionText")
 
 onready var promt = $Promt
 func _ready():

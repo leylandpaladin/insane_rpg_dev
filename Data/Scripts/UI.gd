@@ -22,11 +22,11 @@ func _unhandled_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 		
-#func _on_ItemSlot_gui_input(event, index):
-#	if event is InputEventMouseButton:
-#		if event.button_index == BUTTON_LEFT and event.pressed:
-#			if inventory_menu.visible:
-#				drag_item(index)
+func _on_ItemSlot_gui_input(event, index):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			if inventory_menu.visible:
+				drag_item(index)
 
 func drag_item(index):
 	var inventory_item = Inventory.items[index]

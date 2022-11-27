@@ -14,7 +14,7 @@ var items = []
 func _ready():
 	for i in range(slots):
 		items.append({})
-	items[0] = test_item.duplicate(true)
+	items[0] = test_item.duplicate()
 	
 func set_item(index, item):
 	var previous_item = items[index]
@@ -23,8 +23,8 @@ func set_item(index, item):
 	return previous_item
 
 func remove_item(index):
-	var previous_item = items[index].duplicate(true)
-	items[index].clear()
+	var previous_item = items[index].duplicate()
+	items[index] = null
 	emit_signal("items_changed", [index])
 	return previous_item
 	

@@ -19,6 +19,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 
 [node name="Quantity" type="Label" parent="."]
 anchor_top = 1.0
