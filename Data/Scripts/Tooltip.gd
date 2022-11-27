@@ -1,16 +1,13 @@
 extends ColorRect
 
+onready var margin_container = $MarginContainer
+onready var item_name = $MarginContainer/ItemName
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	rect_position = get_global_mouse_position() + Vector2.ONE * 4
+	
+func display_info(item):
+	item_name.text = item.name
+	yield(get_tree(), "idle_frame")
+	margin_container.rect_size = Vector2()
+	rect_size = margin_container.rect_size
