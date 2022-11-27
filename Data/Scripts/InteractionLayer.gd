@@ -81,7 +81,10 @@ func on_Interaction(body, target):
 					$InteractionDialogue/ye.set_text(target.promt_action)
 				
 			else:
-				print("effect being used without confirmation")
+				lock_control(body)				
+				$InteractionDialogue.show()
+				$InteractionDialogue/InteractionDialogueText.set_text(target.description)
+				$InteractionDialogue/ye.set_text(target.promt_action)
 			
 		
 	
@@ -158,7 +161,6 @@ func infolayer_showtext(text, seconds):
 	print("Timer start for: ", seconds, "seconds")
 
 
-
 func _on_Timer_timeout():
 
 	info_layer.hide()
@@ -181,4 +183,10 @@ func dialog_listener(string):
 	match string:
 		"alexey_teleporting_you":
 			get_tree().change_scene("res://Data/Scenes/BasementOfDoom.tscn")
+			
+		"tp_to_village":
+			
+			print("ATTEMPTING TO TELEPORT INTO NEW VILLAGE!")			
+			get_tree().change_scene("res://Data/Scenes/Village_001.tscn")
+			
 			

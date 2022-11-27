@@ -16,7 +16,7 @@
 			"question": "Who are you?"
 		},
 		{
-			"choice": "I'm mad eggroller",
+			"choice": "Can you TP me to new village?)",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -26,7 +26,11 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Me too, but I can't move yet"
+			"text": "Yea sure lad"
+		},
+		{
+			"emit_signal": "tp_to_village",
+			"event_id": "dialogic_040"
 		},
 		{
 			"choice": "Why do you care?",
