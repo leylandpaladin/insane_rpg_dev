@@ -7,7 +7,7 @@ var start_id = "1"
 var body2 = null
 var target2 = null
 
-onready var dialogueWindow = $DialogueBox
+#onready var dialogueWindow = $DialogueBox
 onready var player_skin = $"../Appearance"
 onready var player_nose = $"../Pivot/Camera_1st/Nose"
 onready var timer = $"../Control/InfoLayer/Timer"

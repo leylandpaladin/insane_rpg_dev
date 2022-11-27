@@ -2,7 +2,6 @@ class_name Interactable
 extends Node
 
 
-
 export var promt_message := "Interact"
 export var promt_action := "Interact"
 export var obj_name := "Generic"
