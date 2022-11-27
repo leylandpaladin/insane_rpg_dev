@@ -11,6 +11,7 @@ func _ready():
 		item_slot.connect("gui_input", self, "_on_ItemSlot_gui_input", [index])
 		item_slot.connect("mouse_entered", self, "show_tooltip", [index])
 		item_slot.connect("mouse_exited", self, "hide_tooltip")
+	hide_tooltip()
 		
 # TODO: make more unified input logic and handler
 func _unhandled_input(event):

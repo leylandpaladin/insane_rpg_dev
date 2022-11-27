@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Sting"
-type = -1
+type = 0
 icon = ExtResource( 2 )
 stackable = false
 quantity = 1
