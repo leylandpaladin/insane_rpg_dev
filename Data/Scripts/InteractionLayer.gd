@@ -18,7 +18,7 @@ func _ready():
 	
 	SignalsGateway.connect("interacted", self, "on_Interaction")
 	SignalsGateway.connect("pressed", self, "on_ui_accept")
-	SignalsGateway.connect("interact_effect", self, "on_Interaction_effect")
+	SignalsGateway.connect("interact_effect", self, "on_Interaction_effect_accepted")
 	timer.connect("timeout", info_layer, "timeout")
 	print("signals loaded")
 	
@@ -94,7 +94,7 @@ func on_Interaction(body, target):
 			
 		
 	
-func on_Interaction_effect(body, target):
+func on_Interaction_effect_accepted(body, target):
 	
 	match target.EffectDone:
 		
