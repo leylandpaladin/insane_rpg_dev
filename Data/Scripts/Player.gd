@@ -85,7 +85,7 @@ func _physics_process(delta):
 
 func change_weapon():
 	pass
-	
+
 
 func _process(delta):
 	

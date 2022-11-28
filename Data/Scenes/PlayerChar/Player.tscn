@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Data/Scripts/UI.gd" type="Script" id=6]
 [ext_resource path="res://Data/Scenes/UI/DragPreview.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Data/Scenes/UI/Tooltip.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Data/Scenes/PlayerChar/Grip.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.190515
@@ -69,9 +70,12 @@ material/0 = SubResource( 7 )
 
 [node name="Weapon" type="Spatial" parent="Pivot"]
 
+[node name="Grip" type="Spatial" parent="Pivot/Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40344, -0.513242, 0 )
+script = ExtResource( 9 )
+
 [node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 0.954282, 0.298908, 0, -0.298908, 0.954282, 0.586407, 0.450313, 2.0316 )
-current = true
+transform = Transform( 1, 0, 0, 0, 0.937203, 0.348785, 0, -0.348785, 0.937203, -0.0445608, 2.64375, 7.41831 )
 fov = 61.0
 
 [node name="Appearance" type="MeshInstance" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Data/Scenes/00TestLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Well_00.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Data/Scenes/Interactable_Objects/Market_stall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Data/Scenes/PlayerChar/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Data/Scripts/EffectObject.gd" type="Script" id=7]
+[ext_resource path="res://Data/Scenes/Altair.tscn" type="PackedScene" id=8]
 
 [node name="Basement_of_Doom" type="Spatial"]
 
@@ -41,3 +42,6 @@ promt_message = "Trade"
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.200841, 0.728192, -0.655286, 0.213389, 0.685374, 0.696224, 0.9561, 0, -0.293039, 81.0608, -5.56944, -25.6296 )
 light_energy = 2.516
+
+[node name="altar" parent="." instance=ExtResource( 8 )]
+transform = Transform( 5.96548, 0, 5.33039, 0, 8, 0, -5.33039, 0, 5.96548, -35.8792, -14.0196, -70.8894 )

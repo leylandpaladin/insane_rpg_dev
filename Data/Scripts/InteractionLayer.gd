@@ -81,10 +81,11 @@ func on_Interaction(body, target):
 					$InteractionDialogue/ye.set_text(target.promt_action)
 				
 			else:
-				lock_control(body)				
-				$InteractionDialogue.show()
-				$InteractionDialogue/InteractionDialogueText.set_text(target.description)
-				$InteractionDialogue/ye.set_text(target.promt_action)
+				
+				match target.EffectDone:
+					
+					0: 
+						Effects.player_teleport(target.scene_string)
 			
 		
 	
