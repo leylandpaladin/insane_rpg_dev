@@ -242,8 +242,9 @@ script = ExtResource( 5 )
 promt_message = "Inspect"
 promt_action = "Aight"
 obj_name = "Firewood"
-description = "Pakc of firewood ready for burning"
-ObjectType = 3
+description = "Pack of firewood ready for burning"
+ObjectType = 4
+EffectDone = -1
 
 [node name="churki" type="MeshInstance" parent="Churki" index="0"]
 mesh = SubResource( 1 )

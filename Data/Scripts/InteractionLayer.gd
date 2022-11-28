@@ -86,6 +86,11 @@ func on_Interaction(body, target):
 					
 					0: 
 						Effects.player_teleport(target.scene_string)
+		4: 
+			lock_control(body)				
+			$InteractionDialogue.show()
+			$InteractionDialogue/InteractionDialogueText.set_text(target.description)
+			$InteractionDialogue/ye.set_text(target.promt_action)
 			
 		
 	
@@ -117,6 +122,11 @@ func _on_ye_pressed(body, target):
 	if target.ObjectType == 3:
 		
 		SignalsGateway.emit_signal("interact_effect", body, target)	
+		$InteractionDialogue.hide()
+		unlock_control()
+	
+	if target.ObjectType == 4:
+		
 		$InteractionDialogue.hide()
 		unlock_control()
 	

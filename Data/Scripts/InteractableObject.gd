@@ -9,7 +9,7 @@ export var description := ""
 export var attackable := false
 export var accept_before_process := false
 
-enum TYPE {NONE = -1, DOOR = 0, NPC = 1, CONTAINER = 2, HAS_EFFECT = 3}
+enum TYPE {NONE = -1, DOOR = 0, NPC = 1, CONTAINER = 2, HAS_EFFECT = 3, INSPECTABLE = 4}
 export (TYPE) var ObjectType
 
 
