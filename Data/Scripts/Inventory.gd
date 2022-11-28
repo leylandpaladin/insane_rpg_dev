@@ -18,6 +18,7 @@ func _ready():
 	items[0] = sword.duplicate()
 	items[1] = health_potion.duplicate()
 	items[2] = health_potion.duplicate()
+	items[2].quantity = 5
 	
 	
 func set_item(index, item):
