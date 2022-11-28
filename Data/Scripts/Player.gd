@@ -36,6 +36,9 @@ func get_input():
 		get_tree().quit()
 	if Input.is_action_just_pressed("change_cameramode"):
 		change_camera_mode()
+		
+	if Input.is_action_just_pressed("attack") and Input.is_action_pressed("move_forward"):
+		attack_type_1()
 	
 	# Нормализирует инпут таким образом что мы не сможем слишком быстро стрейфится
 	input_dir = input_dir.normalized() 
@@ -86,6 +89,9 @@ func _physics_process(delta):
 func change_weapon():
 	pass
 
+func attack_type_1():
+	
+	$Pivot/Weapon/Grip/Sword_1h/AnimationPlayer.play("thrust_sword_1h")
 
 func _process(delta):
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Data/Scenes/UI/DragPreview.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Data/Scenes/UI/Tooltip.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Data/Scenes/PlayerChar/Grip.gd" type="Script" id=9]
+[ext_resource path="res://Data/Scenes/Items/Weapons/Sword_1h.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.190515
@@ -20,6 +21,60 @@ height = 0.438041
 material = SubResource( 6 )
 
 [sub_resource type="SpatialMaterial" id=7]
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.0976387, 0.507403, -1.19696 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 2.59405, 91.0776, 84.2043 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "thrust_sword_1h"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.06, 0.316, -0.346 ), Vector3( -0.0601339, 0.429369, -1.59198 ), Vector3( 0.0390443, 0.335776, -0.563345 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.70111, 91.4842, 98.6498 ), Vector3( 3.70111, 91.4842, 98.6498 ), Vector3( 5.43789, 93.0411, 127.49 ) ]
+}
 
 [sub_resource type="SpatialMaterial" id=8]
 
@@ -45,7 +100,7 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995, 0.143 )
 
 [node name="Camera_1st" type="Camera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117897, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117897, -0.218457 )
 far = 1432.5
 
 [node name="InteractionRay" type="RayCast" parent="Pivot/Camera_1st"]
@@ -63,16 +118,25 @@ margin_bottom = 727.0
 text = "PLACEHOLDER"
 
 [node name="Nose" type="MeshInstance" parent="Pivot/Camera_1st"]
-transform = Transform( 0.0404, 0, 0, 0, -0.013154, 0.0454858, 0, -0.501831, -0.00113723, -0.0294444, -0.160076, -0.389416 )
+transform = Transform( -0.067, 0, 0, 0, -0.00579085, 0.0459842, 0, -0.220924, -0.00120534, -0.0423166, -0.152681, -0.124376 )
 mesh = SubResource( 4 )
 skeleton = NodePath("../../../Appearance")
 material/0 = SubResource( 7 )
 
 [node name="Weapon" type="Spatial" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153, 0.65, -0.676 )
 
-[node name="Grip" type="Spatial" parent="Pivot/Weapon"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40344, -0.513242, 0 )
+[node name="Grip" type="BoneAttachment" parent="Pivot/Weapon"]
+transform = Transform( 0.994789, -0.0268579, -0.0983582, 0.0354968, 0.995562, 0.0871614, 0.0955806, -0.0901986, 0.991327, 0.25506, -1.21097, 0.55305 )
+bone_name = "grip"
 script = ExtResource( 9 )
+
+[node name="Sword_1h" parent="Pivot/Weapon/Grip" instance=ExtResource( 10 )]
+transform = Transform( 0.0129363, 0.00698378, 0.299639, 0.298161, 0.0302633, -0.0135778, -0.0305431, 0.298388, -0.00563597, 0.0976387, 0.507403, -1.19696 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Weapon/Grip/Sword_1h"]
+anims/RESET = SubResource( 12 )
+anims/thrust_sword_1h = SubResource( 13 )
 
 [node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 0.937203, 0.348785, 0, -0.348785, 0.937203, -0.0445608, 2.64375, 7.41831 )
