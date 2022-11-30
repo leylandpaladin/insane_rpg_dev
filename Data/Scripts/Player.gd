@@ -37,8 +37,10 @@ func get_input():
 	if Input.is_action_just_pressed("change_cameramode"):
 		change_camera_mode()
 		
-	if Input.is_action_just_pressed("attack") and Input.is_action_pressed("move_forward"):
+	if Input.is_action_just_pressed("attack"):
 		attack_type_1()
+	
+	
 	
 	# Нормализирует инпут таким образом что мы не сможем слишком быстро стрейфится
 	input_dir = input_dir.normalized() 
@@ -92,6 +94,15 @@ func change_weapon():
 func attack_type_1():
 	
 	$Pivot/Weapon/Grip/Sword_1h/AnimationPlayer.play("thrust_sword_1h")
+	for body in $Pivot/Weapon/Grip/Sword_1h/hitbox.get_overlapping_bodies():
+		if body.name == "NPC":
+			print("hit landed on  ", body.obj_name)
+			body.health -= 100
+		
+	
+func attack_type_2():
+	
+	$Pivot/Weapon/Grip/Sword_1h/AnimationPlayer.play("cleave_sword_1h")
 
 func _process(delta):
 	

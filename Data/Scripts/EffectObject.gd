@@ -9,5 +9,3 @@ export var usedOnce := false
 export var used_once_line := ""
 export (float) var magnitude = 0
 export var scene_string := ""
-
-

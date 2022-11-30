@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Data/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/Scripts/InteractionRaycast.gd" type="Script" id=2]
@@ -23,7 +23,6 @@ material = SubResource( 6 )
 [sub_resource type="SpatialMaterial" id=7]
 
 [sub_resource type="Animation" id=12]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
@@ -31,10 +30,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.0976387, 0.507403, -1.19696 ) ]
+"values": [ Vector3( 0.13804, 0.469277, -0.777935 ), Vector3( 0.0976387, 0.507403, -1.19696 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -43,10 +42,76 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.6177, 93.3338, 131.695 ), Vector3( 2.59405, 91.0776, 84.2043 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 2.59405, 91.0776, 84.2043 ) ]
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "cleave_return"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.37241, 0.411126, -0.849182 ), Vector3( 0.039, 0.336, -0.849 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 80.8082, 160.201, 129.876 ), Vector3( 80.8082, 160.201, 129.876 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "cleave_sword_1h"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0390443, 0.335776, -0.563345 ), Vector3( 0.451419, 0.361885, -1.02951 ), Vector3( -1.37241, 0.411126, -0.849182 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.43789, 93.0411, 127.49 ), Vector3( 85.3952, 124.454, 151.798 ), Vector3( 80.8082, 160.201, 129.876 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -75,6 +140,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 3.70111, 91.4842, 98.6498 ), Vector3( 3.70111, 91.4842, 98.6498 ), Vector3( 5.43789, 93.0411, 127.49 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="CapsuleShape" id=16]
+radius = 0.405701
+height = 3.77016
 
 [sub_resource type="SpatialMaterial" id=8]
 
@@ -132,11 +213,21 @@ bone_name = "grip"
 script = ExtResource( 9 )
 
 [node name="Sword_1h" parent="Pivot/Weapon/Grip" instance=ExtResource( 10 )]
-transform = Transform( 0.0129363, 0.00698378, 0.299639, 0.298161, 0.0302633, -0.0135778, -0.0305431, 0.298388, -0.00563597, 0.0976387, 0.507403, -1.19696 )
+transform = Transform( 0.0334957, -0.00647389, 0.298053, 0.222934, -0.19859, -0.029367, 0.197935, 0.224767, -0.0173621, 0.13804, 0.469277, -0.777935 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Weapon/Grip/Sword_1h"]
 anims/RESET = SubResource( 12 )
+anims/cleave_return = SubResource( 15 )
+anims/cleave_sword_1h = SubResource( 14 )
 anims/thrust_sword_1h = SubResource( 13 )
+
+[node name="hitbox" type="Area" parent="Pivot/Weapon/Grip/Sword_1h"]
+transform = Transform( 1, 0, 9.31323e-09, -5.96046e-08, 1, 6.33299e-08, 0, 4.09782e-08, 1, 0.0527005, 0.0763137, 0.0570813 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/Weapon/Grip/Sword_1h/hitbox"]
+transform = Transform( 1, -7.45058e-09, 0, -2.98023e-08, -4.84288e-08, -1, -7.45058e-09, 1, -4.09782e-08, 0.1351, -0.109687, -0.0120701 )
+shape = SubResource( 16 )
+disabled = true
 
 [node name="Camera_3rd" type="ClippedCamera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 0.937203, 0.348785, 0, -0.348785, 0.937203, -0.0445608, 2.64375, 7.41831 )

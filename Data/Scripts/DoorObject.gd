@@ -10,3 +10,7 @@ export (LOCK_LEVEL) var LockLevel
 export var InterlocationDoor = false
 export var ScenePath :=""
 
+
+func _ready():
+	
+	ObjectType = TYPE.DOOR

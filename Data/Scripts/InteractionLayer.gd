@@ -54,10 +54,14 @@ func on_Interaction(body, target):
 				print(" .... Playing opening anim")
 		1: # NPC
 			print(target.obj_name, " is NPC")
-			if not target.hostile:
+			if not target.hostile and not target.NpcType == 4:
 				start_dialog(target.obj_name, body, target.dialog_index)
-			else:
-				"you can't speak with hostile target"
+				
+			elif target.NpcType == 4:
+				
+				var text1 = target.obj_name + "  IS DEAD NOW"
+				infolayer_showtext(text1, 5)
+				
 		
 		2: # Container
 			print(body.name, " is container")
@@ -87,10 +91,7 @@ func on_Interaction(body, target):
 					0: 
 						Effects.player_teleport(target.scene_string)
 		4: 
-			lock_control(body)				
-			$InteractionDialogue.show()
-			$InteractionDialogue/InteractionDialogueText.set_text(target.description)
-			$InteractionDialogue/ye.set_text(target.promt_action)
+			infolayer_showtext(target.description, 5)
 			
 		
 	
@@ -165,8 +166,8 @@ func infolayer_showtext(text, seconds):
 	
 	var text_shown
 	info_layer.show()
-	text_shown = "current value is: " + str(text)
-	info_layer.set_text(text_shown)
+	text_shown = ""
+	info_layer.set_text(str(text))
 	timer.wait_time = seconds
 	timer.start()
 	print("Timer start for: ", seconds, "seconds")
