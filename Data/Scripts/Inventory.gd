@@ -7,6 +7,7 @@ signal items_changed(indexes)
 onready var sword = preload("res://Data/Resources/Items/Weapons/Sword.tres")
 onready var health_potion = preload("res://Data/Resources/Items/Potions/Health.tres")
 
+var currentSlotId = -1
 var cols := 8
 var rows := 4
 var slots := cols * rows
