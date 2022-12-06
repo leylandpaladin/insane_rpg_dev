@@ -12,6 +12,7 @@ var cols := 8
 var rows := 4
 var slots := cols * rows
 var items = []
+var visible = false
 
 func _ready():
 	for i in range(slots):

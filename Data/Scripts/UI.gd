@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 onready var hotbar := $Hotbar
-onready var inventory_menu := $InventoryMenu
+onready var inventory_menu := $InventoryBG/VBoxContainer/InventoryMenu
+onready var inventory_bg := $InventoryBG
 onready var drag_preview = $DragPreview
 onready var tooltip = $Tooltip
 
@@ -18,6 +19,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("inventory_menu"):
 		if inventory_menu.visible and drag_preview.dragged_item: return
 		inventory_menu.visible = !inventory_menu.visible
+		inventory_bg.visible = !inventory_bg.visible
+		Inventory.visible = !Inventory.visible
 		if (!Globals.mouseLocked):
 			Globals.mouseLocked = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

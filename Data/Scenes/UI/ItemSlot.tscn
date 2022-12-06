@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Data/Scripts/ItemSlot.gd" type="Script" id=2]
+[ext_resource path="res://Data/Scenes/UI/rounded_corners.tres" type="StyleBox" id=3]
+[ext_resource path="res://Data/Scenes/UI/rounded_corners2.tres" type="StyleBox" id=4]
+
+[sub_resource type="Theme" id=4]
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -18,14 +22,14 @@ uniform float OutlinePixelSize : hint_range(0.01, 10.0) = 1;
 // Rainbow
 uniform bool UseRainbowColorOutline = true;
 uniform float RainbowColorLightOffset : hint_range(0.0, 1.0) = 0;   // this offsets all color channels; if set to 0 only red green and blue colors will be shown.
-uniform float RainbowColorSinFrequency : hint_range(0.1, 2.0) = 0.1;  // frequency of the rainbow
+uniform float RainbowColorSinFrequency : hint_range(0.1, 2.0) = 1.0;  // frequency of the rainbow
 
 // Noise
 uniform bool OutlineUseNoise = false;
 uniform float NoiseBlockSize = 5.0;
 uniform float NoiseMaxLineWidth = 10.0;
 uniform float NoiseMinLineWidth = 5.0;
-uniform float NoiseFreq = 1.0;
+uniform float NoiseFreq = 2.0;
 
 uniform vec4 BackgroundColor : hint_color = vec4(0.95, 0.95, 0.95, 1.0);
 
@@ -204,25 +208,26 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource( 3 )
 shader_param/DonutMaskCenter = Vector2( 0.5, 0.5 )
-shader_param/DonutMaskSize = 2.4
+shader_param/DonutMaskSize = 2.3
 shader_param/DonutMaskThickness = 1.5
-shader_param/OutlineWidth = 1.387
-shader_param/OutlinePixelSize = 1.0
+shader_param/OutlineWidth = 51.639
+shader_param/OutlinePixelSize = 2.674
 shader_param/UseRainbowColorOutline = true
-shader_param/RainbowColorLightOffset = 0.0
-shader_param/RainbowColorSinFrequency = 0.1
+shader_param/RainbowColorLightOffset = 0.829
+shader_param/RainbowColorSinFrequency = 0.833
 shader_param/OutlineUseNoise = false
-shader_param/NoiseBlockSize = 5.0
-shader_param/NoiseMaxLineWidth = 10.0
+shader_param/NoiseBlockSize = 3.0
+shader_param/NoiseMaxLineWidth = 5.0
 shader_param/NoiseMinLineWidth = 5.0
-shader_param/NoiseFreq = 1.0
-shader_param/BackgroundColor = Color( 0.95, 0.95, 0.95, 1 )
+shader_param/NoiseFreq = 8.0
+shader_param/BackgroundColor = Color( 1, 1, 1, 1 )
 
-[node name="ItemSlot" type="ColorRect" groups=["item_slot"]]
+[node name="ItemSlot" type="Panel" groups=["item_slot"]]
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
-color = Color( 0.0431373, 0.0431373, 0.0431373, 0.784314 )
+theme = SubResource( 4 )
+custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -237,11 +242,12 @@ margin_bottom = 32.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Icon"]
+[node name="ColorRect" type="Panel" parent="Icon"]
 material = SubResource( 2 )
 margin_right = 64.0
 margin_bottom = 64.0
 mouse_filter = 1
+custom_styles/panel = ExtResource( 3 )
 
 [node name="Quantity" type="Label" parent="."]
 anchor_top = 1.0
