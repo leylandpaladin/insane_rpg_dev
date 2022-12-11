@@ -13,6 +13,7 @@ var rows := 4
 var slots := cols * rows
 var items = []
 var visible = false
+var item_count = 0
 
 func _ready():
 	for i in range(slots):
@@ -21,6 +22,7 @@ func _ready():
 	items[1] = health_potion.duplicate()
 	items[2] = health_potion.duplicate()
 	items[2].quantity = 5
+	item_count = 3
 	
 	
 func set_item(index, item):

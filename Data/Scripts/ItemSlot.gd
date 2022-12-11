@@ -1,5 +1,6 @@
 extends Panel
 
+
 onready var icon = $Icon
 onready var quantity = $Quantity
 onready var shader = $Icon/ColorRect.material
@@ -20,17 +21,17 @@ func display_item(item):
 
 func fade_shader():
 	if !Inventory.visible:
-		shader.set("shader_param/DonutMaskSize", clamp(2.24, 2.17, 2.24))
+		shader.set("shader_param/DonutMaskSize", 2.25)
 	if fadeIn && fadeAmount > 2.17:
-		fadeAmount -= 0.04
-		shader.set("shader_param/DonutMaskSize", clamp(fadeAmount, 2.17, 2.24))
-	elif !fadeIn && fadeAmount < 2.24:
+		fadeAmount -= 0.05
+		shader.set("shader_param/DonutMaskSize", clamp(fadeAmount, 2.17, 2.25))
+	elif !fadeIn && fadeAmount < 2.25:
 		fadeAmount += 0.05
-		shader.set("shader_param/DonutMaskSize", clamp(fadeAmount, 2.17, 2.24))
+		shader.set("shader_param/DonutMaskSize", clamp(fadeAmount, 2.17, 2.25))
 
 
 func _on_ItemSlot_mouse_entered():
-		fadeIn = true
+	fadeIn = true
 
 func _on_ItemSlot_mouse_exited():
 	fadeIn = false
