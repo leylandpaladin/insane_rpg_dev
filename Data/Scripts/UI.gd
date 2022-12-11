@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 onready var hotbar := $Hotbar
-onready var inventory_menu := $InventoryMenu
+onready var inventory_menu := $InventoryBG/VBoxContainer/InventoryMenu
+onready var inventory_bg := $InventoryBG
 onready var drag_preview = $DragPreview
 onready var tooltip = $Tooltip
 
@@ -18,6 +19,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("inventory_menu"):
 		if inventory_menu.visible and drag_preview.dragged_item: return
 		inventory_menu.visible = !inventory_menu.visible
+		inventory_bg.visible = !inventory_bg.visible
+		Inventory.visible = !Inventory.visible
 		if (!Globals.mouseLocked):
 			Globals.mouseLocked = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -43,9 +46,11 @@ func drag_item(index):
 	var dragged_item = drag_preview.dragged_item
 	# pick item
 	if inventory_item and !dragged_item:
+		Inventory.item_count -= 1
 		drag_preview.dragged_item = Inventory.remove_item(index)
 	# drop item
 	elif !inventory_item and dragged_item:
+		Inventory.item_count += 1
 		drag_preview.dragged_item = Inventory.set_item(index, dragged_item)
 	elif inventory_item and dragged_item:
 		# stack items
@@ -58,6 +63,8 @@ func drag_item(index):
 			
 func split_item(index):
 		var inventory_item = Inventory.items[index]
+		if inventory_item.quantity == 1:
+			Inventory.item_count -= 1
 		var dragged_item = drag_preview.dragged_item
 		if !inventory_item or !inventory_item.stackable: return
 		var split_amount = ceil(inventory_item.quantity / 2.0)
