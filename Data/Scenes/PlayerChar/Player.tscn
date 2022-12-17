@@ -162,6 +162,7 @@ theme = SubResource( 11 )
 text = "ye"
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 10
 script = ExtResource( 6 )
 
 [node name="Hotbar" parent="UI" instance=ExtResource( 3 )]
@@ -169,6 +170,18 @@ mouse_filter = 2
 columns = 8
 
 [node name="InventoryBG" parent="UI" instance=ExtResource( 4 )]
+light_mask = 0
+mouse_filter = 1
+
+[node name="VBoxContainer" parent="UI/InventoryBG" index="0"]
+light_mask = 512
+
+[node name="InfoPanel" parent="UI/InventoryBG/VBoxContainer" index="0"]
+light_mask = 512
+
+[node name="InventoryMenu" parent="UI/InventoryBG/VBoxContainer" index="1"]
+light_mask = 512
+mouse_filter = 1
 
 [node name="DragPreview" parent="UI" instance=ExtResource( 7 )]
 

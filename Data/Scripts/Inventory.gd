@@ -30,7 +30,6 @@ func set_item(index, item):
 	var previous_item = items[index]
 	items[index] = item
 	emit_signal("items_changed", [index])
-	item_count += 1
 	emit_signal("item_count_changed", item_count)
 	return previous_item
 
@@ -38,7 +37,6 @@ func remove_item(index):
 	var previous_item = items[index].duplicate()
 	items[index] = null
 	emit_signal("items_changed", [index])
-	item_count -= 1
 	emit_signal("item_count_changed", item_count)
 	return previous_item
 	
