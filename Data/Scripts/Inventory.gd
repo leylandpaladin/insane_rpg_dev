@@ -1,6 +1,7 @@
 extends Node
 
 signal items_changed(indexes)
+signal item_count_changed(item_count)
 
 ## Test items
 ## TODO: make provider and logic for resources
@@ -30,6 +31,7 @@ func set_item(index, item):
 	items[index] = item
 	emit_signal("items_changed", [index])
 	item_count += 1
+	emit_signal("item_count_changed", item_count)
 	return previous_item
 
 func remove_item(index):
@@ -37,6 +39,7 @@ func remove_item(index):
 	items[index] = null
 	emit_signal("items_changed", [index])
 	item_count -= 1
+	emit_signal("item_count_changed", item_count)
 	return previous_item
 	
 func set_item_quantity(index, amount):
