@@ -1,6 +1,5 @@
 extends Panel
 
-
 onready var icon = $Icon
 onready var quantity = $Quantity
 onready var shader = $Icon/ColorRect.material
