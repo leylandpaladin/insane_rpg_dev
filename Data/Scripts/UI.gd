@@ -48,34 +48,41 @@ func drag_item(index):
 	if inventory_item and !dragged_item:
 		Inventory.item_count -= 1
 		drag_preview.dragged_item = Inventory.remove_item(index)
+		log_action(inventory_item.name + " picked up from slot " + str(index))
 	# drop item
 	elif !inventory_item and dragged_item:
 		Inventory.item_count += 1
 		drag_preview.dragged_item = Inventory.set_item(index, dragged_item)
+		log_action(dragged_item.name + " dropped to slot " + str(index))
 	elif inventory_item and dragged_item:
 		# stack items
 		if inventory_item.name == dragged_item.name and inventory_item.stackable:
+			log_action("Stacked " + dragged_item.name + " quantities " + str(dragged_item.quantity) + " + " + str(inventory_item.quantity))			
 			Inventory.set_item_quantity(index, dragged_item.quantity)
+			log_action("New stack total of " + dragged_item.name + "s in slot " + str(index) + " is " + str(inventory_item.quantity))
 			drag_preview.dragged_item = null
 		# swap items
 		else:
 			drag_preview.dragged_item = Inventory.set_item(index, dragged_item)
+			log_action("Swapping " + dragged_item.name + " and " + inventory_item.name)
 			
 func split_item(index):
 		var inventory_item = Inventory.items[index]
-		if inventory_item.quantity == 1:
-			Inventory.item_count -= 1
 		var dragged_item = drag_preview.dragged_item
 		if !inventory_item or !inventory_item.stackable: return
+		if inventory_item.quantity == 1:
+			Inventory.item_count -= 1
 		var split_amount = ceil(inventory_item.quantity / 2.0)
 		if dragged_item and inventory_item.name == dragged_item.name:
 			drag_preview.dragged_item.quantity += split_amount
 			Inventory.set_item_quantity(index, -split_amount)
+			log_action("Splitting stack of " + dragged_item.name + "s")
 		if !dragged_item:
 			var item = inventory_item.duplicate()
 			item.quantity = split_amount
 			drag_preview.dragged_item = item
 			Inventory.set_item_quantity(index, -split_amount)
+			log_action("Splitting stack of " + inventory_item.name + "s")
 
 func show_tooltip(index):
 	var inventory_item = Inventory.items[index]
@@ -87,3 +94,7 @@ func show_tooltip(index):
 
 func hide_tooltip():
 	tooltip.hide()
+	
+func log_action(input):
+	Console.write("[color=#4ab3ff]Inventory action: [/color]")
+	Console.write_line(input)

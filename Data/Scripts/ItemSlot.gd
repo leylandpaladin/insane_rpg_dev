@@ -1,8 +1,8 @@
 extends Panel
 
-const donutMaskSizeMin = 2.17
-const donutMaskSizeMax = 2.25
-const shaderSpeed = 0.9
+const donutMaskSizeMin := 2.17
+const donutMaskSizeMax := 2.25
+const shaderSpeed := 0.9
 
 onready var icon = $Icon
 onready var quantity = $Quantity

@@ -18,12 +18,12 @@ var item_count = 0
 
 func _ready():
 	for i in range(slots):
-		items.append({})
+		items.append(null)
 	items[0] = sword.duplicate()
 	items[1] = health_potion.duplicate()
 	items[2] = health_potion.duplicate()
 	items[2].quantity = 5
-	item_count = 3
+	get_initial_item_count()
 	
 	
 func set_item(index, item):
@@ -46,4 +46,8 @@ func set_item_quantity(index, amount):
 		remove_item(index)
 	else:
 		emit_signal("items_changed", [index])
-	
+		
+func get_initial_item_count():
+	for item in items:
+		if (item != null):
+			item_count += 1
