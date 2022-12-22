@@ -133,6 +133,7 @@ light_color = Color( 0.396078, 0.305882, 0.439216, 1 )
 light_energy = 1.417
 light_indirect_energy = 1.139
 light_specular = 1.487
+light_cull_mask = 4294966783
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.23
